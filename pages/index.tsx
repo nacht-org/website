@@ -1,86 +1,66 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from "next";
+import { TypeAnimation } from "react-type-animation";
+import { DownloadOutlined } from "@ant-design/icons";
+import CodeLink from "../components/CodeLink";
+import DownloadLink from "../components/DownloadLink";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
+    <div className="dark:bg-eerie-black h-full w-full">
+      <header className="sticky top-0 flex items-center bg-white dark:bg-eerie-black p-4 md:p-8">
+        <h1 className="font-display text-2xl">
+          <a
+            href="/"
+            className="text-oxford-blue hover:text-oxford-blue/80 dark:text-floral-white dark:hover:text-floral-white/80 transition-colors"
+          >
+            Pronomia
           </a>
         </h1>
-
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="flex flex-row items-center gap-8 ml-auto">
+          <a className="hidden md:block">Getting Started</a>
+          <a className="hidden md:block">Guides</a>
+          <a className="hidden md:block">Privacy Policy</a>
+          <div className="h-4 border-r hidden md:block"></div>
+          <DownloadLink />
+          <CodeLink />
         </div>
-      </main>
+      </header>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
+      <div className="mb-32"></div>
+
+      <div className="flex flex-col items-center w-100 p-4 md:p-8">
+        <h1 className="font-display text-7xl text-oxford-blue dark:text-floral-white text-center mb-6">
+          Read with no distraction
+        </h1>
+        <TypeAnimation
+          sequence={[
+            "Free and open source novel reader",
+            1000,
+            "Designed to be user friendly and customizable",
+            1000,
+            "Read your favourite novels from multiple sources",
+            2000,
+          ]}
+          wrapper="span"
+          cursor={true}
+          repeat={Infinity}
+          className="text-3xl text-floral-white text-center h-32 md:h-16"
+        />
         <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          href=""
+          className="px-8 py-4 bg-cardinal hover:bg-cardinal/80 rounded shadow hover:shadow-md hover:text-floral-white text-lg font-bold"
         >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          Getting Started
         </a>
-      </footer>
-    </div>
-  )
-}
+      </div>
 
-export default Home
+      <div className="flex flex-col items-center md:flex-row justify-center gap-4 p-4 md:p-8">
+        <div className="rounded bg-floral-white w-full md:w-72 aspect-9/16 shadow-md"></div>
+        <div className="rounded bg-floral-white w-full md:w-72 aspect-9/16 shadow-md"></div>
+        <div className="rounded bg-floral-white w-full md:w-72 aspect-9/16 shadow-md"></div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;

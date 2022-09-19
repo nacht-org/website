@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a {
+  @apply dark:text-floral-white dark:hover:text-floral-white/80 transition-colors cursor-pointer;
+}
