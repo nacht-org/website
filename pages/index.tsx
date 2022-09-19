@@ -4,10 +4,12 @@ import CodeLink from "../components/CodeLink";
 import DownloadLink from "../components/DownloadLink";
 import ShowcaseRow from "../components/showcases/ShowcaseRow";
 
+import { BookOutlined } from "@ant-design/icons";
+
 const Home: NextPage = () => {
   return (
     <div className="dark:bg-eerie-black h-full w-full">
-      <header className="sticky top-0 flex items-center bg-white dark:bg-eerie-black/90 p-4 md:p-8">
+      <header className="sticky top-0 flex items-center bg-white dark:bg-eerie-black/90 p-4 md:p-8 z-20">
         <h1 className="font-display text-2xl">
           <a
             href="/"
@@ -53,7 +55,15 @@ const Home: NextPage = () => {
           Getting Started
         </a>
       </div>
+
       <ShowcaseRow />
+
+      <footer className="bg-raisin-black text-floral-white p-8 flex flex-col items-center">
+        <div className="text-sm">
+          Copyright © 2022 Mohamed Haisham | Apache-2.0 | Privacy Policy
+        </div>
+        <div></div>
+      </footer>
     </div>
   );
 };
