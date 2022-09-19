@@ -1,17 +1,17 @@
 import type { NextPage } from "next";
 import { TypeAnimation } from "react-type-animation";
-import { DownloadOutlined } from "@ant-design/icons";
 import CodeLink from "../components/CodeLink";
 import DownloadLink from "../components/DownloadLink";
+import ShowcaseRow from "../components/showcases/ShowcaseRow";
 
 const Home: NextPage = () => {
   return (
     <div className="dark:bg-eerie-black h-full w-full">
-      <header className="sticky top-0 flex items-center bg-white dark:bg-eerie-black p-4 md:p-8">
+      <header className="sticky top-0 flex items-center bg-white dark:bg-eerie-black/90 p-4 md:p-8">
         <h1 className="font-display text-2xl">
           <a
             href="/"
-            className="text-oxford-blue hover:text-oxford-blue/80 dark:text-floral-white dark:hover:text-floral-white/80 transition-colors"
+            className="text-oxford-blue text-floral-white hover:text-floral-white/80 transition-colors"
           >
             Pronomia
           </a>
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
       <div className="mb-32"></div>
 
       <div className="flex flex-col items-center w-100 p-4 md:p-8">
-        <h1 className="font-display text-7xl text-oxford-blue dark:text-floral-white text-center mb-6">
+        <h1 className="font-display text-5xl md:text-7xl text-oxford-blue dark:text-floral-white text-center mb-6">
           Read with no distraction
         </h1>
         <TypeAnimation
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
           wrapper="span"
           cursor={true}
           repeat={Infinity}
-          className="text-3xl text-floral-white text-center h-32 md:h-16"
+          className="text-2xl md:text-3xl text-floral-white text-center h-24 md:h-16"
         />
         <a
           href=""
@@ -53,12 +53,7 @@ const Home: NextPage = () => {
           Getting Started
         </a>
       </div>
-
-      <div className="flex flex-col items-center md:flex-row justify-center gap-4 p-4 md:p-8">
-        <div className="rounded bg-floral-white w-full md:w-72 aspect-9/16 shadow-md"></div>
-        <div className="rounded bg-floral-white w-full md:w-72 aspect-9/16 shadow-md"></div>
-        <div className="rounded bg-floral-white w-full md:w-72 aspect-9/16 shadow-md"></div>
-      </div>
+      <ShowcaseRow />
     </div>
   );
 };
