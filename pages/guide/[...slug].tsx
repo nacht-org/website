@@ -1,12 +1,16 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+
 import { ParsedUrlQuery } from "querystring";
 import ReactMarkdown from "react-markdown";
-
 import remarkGfm from "remark-gfm";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import TimeAgo from "react-timeago";
+
 import { guideSlugs, GuideData, slugsToPath, guideData } from "../../lib/guide";
 import { mdBody } from "../../lib/markdown";
-import Head from "next/head";
+import { EditFilled } from "@ant-design/icons";
+import { editPath, website } from "../../lib/website";
 
 interface Props {
   guide: GuideData;
@@ -36,6 +40,16 @@ const Guide: NextPage<Props> = ({ guide, markdown }) => {
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeAutolinkHeadings]}
           ></ReactMarkdown>
+          <hr className="border-t-floral-white/20 my-8" />
+          <div className="flex justify-between">
+            <span>
+              Last updated:{" "}
+              <TimeAgo date={guide.dateModified} className="ml-1" />
+            </span>
+            <a className="flex gap-2 items-center" href={editPath(guide.path)}>
+              <EditFilled className="flex" /> Improve this page
+            </a>
+          </div>
         </div>
       </main>
     </>

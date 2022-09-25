@@ -13,8 +13,6 @@ a {
 }
 
 .markdown {
-  @apply p-4 text-lg;
-
   h1, h2, h3, h4, h5, h6 {
     @apply font-light tracking-wider mb-8 mt-10;
   }
