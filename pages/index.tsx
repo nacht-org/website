@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { TypeAnimation } from "react-type-animation";
 import CodeLink from "../components/CodeLink";
 import DownloadLink from "../components/DownloadLink";
 import ShowcaseSection from "../components/showcases/ShowcaseSection";
