@@ -9,7 +9,7 @@ interface Props {
 
 const ShowcaseCard: FunctionComponent<Props> = (props) => {
   return (
-    <div className="w-full md:w-72 aspect-9/16">
+    <div className="w-full lg:w-72 aspect-9/16">
       <Image {...props} className="rounded-lg shadow-md border" />
     </div>
   );

@@ -2,9 +2,10 @@ import type { NextPage } from "next";
 import { TypeAnimation } from "react-type-animation";
 import CodeLink from "../components/CodeLink";
 import DownloadLink from "../components/DownloadLink";
-import ShowcaseRow from "../components/showcases/ShowcaseRow";
+import ShowcaseSection from "../components/showcases/ShowcaseSection";
 
-import { BookOutlined } from "@ant-design/icons";
+import { BookOutlined, GithubOutlined } from "@ant-design/icons";
+import Button from "../components/Button";
 
 const Home: NextPage = () => {
   return (
@@ -32,33 +33,23 @@ const Home: NextPage = () => {
 
       <div className="flex flex-col items-center w-100 p-4 md:p-8">
         <h1 className="font-display text-5xl md:text-7xl text-oxford-blue dark:text-floral-white text-center mb-6">
-          Read with no distraction
+          Pronomia
         </h1>
-        <TypeAnimation
-          sequence={[
-            "Free and open source novel reader",
-            1000,
-            "Designed to be user friendly and customizable",
-            1000,
-            "Read your favourite novels from multiple sources",
-            2000,
-          ]}
-          wrapper="span"
-          cursor={true}
-          repeat={Infinity}
-          className="text-2xl md:text-3xl text-floral-white text-center h-24 md:h-16"
-        />
-        <a
-          href=""
-          className="px-8 py-4 bg-cardinal hover:bg-cardinal/80 rounded shadow hover:shadow-md hover:text-floral-white text-lg font-bold"
-        >
-          Getting Started
-        </a>
+        <span className="text-2xl md:text-3xl text-floral-white text-center max-w-5xl mb-8">
+          Free and open source novel reader designed to be user friendly and
+          customizable.
+        </span>
+        <div className="flex flex-col md:flex-row items-center gap-4">
+          <Button href="">Getting Started</Button>
+          <Button className="flex items-center gap-2" href="" secondary>
+            <GithubOutlined className="flex" /> Source Code
+          </Button>
+        </div>
       </div>
 
-      <ShowcaseRow />
+      <ShowcaseSection />
 
-      <footer className="bg-raisin-black text-floral-white p-8 flex flex-col items-center">
+      <footer className="text-floral-white p-8 flex flex-col items-center">
         <div className="text-sm">
           Copyright © 2022 Mohamed Haisham | Apache-2.0 | Privacy Policy
         </div>
