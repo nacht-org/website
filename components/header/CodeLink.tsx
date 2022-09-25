@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FunctionComponent } from "react";
 
 import { GithubOutlined } from "@ant-design/icons";
-import IconButton from "./IconButton";
+import IconButton from "../IconButton";
 
 const CodeLink: FunctionComponent = () => {
   return (

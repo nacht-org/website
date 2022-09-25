@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { DownloadOutlined } from "@ant-design/icons";
-import IconButton from "./IconButton";
+import IconButton from "../IconButton";
 
 const DownloadLink: FunctionComponent = () => {
   return (

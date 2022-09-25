@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-eerie-black text-floral-white;
+}
+
 a {
   @apply dark:text-floral-white dark:hover:text-floral-white/80 transition-colors cursor-pointer;
 }
