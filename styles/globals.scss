@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-eerie-black text-floral-white;
+}
+
+a {
+  @apply dark:text-floral-white dark:hover:text-floral-white/80 transition-colors cursor-pointer;
+}
+
+.markdown {
+  @apply p-4 text-lg;
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-light tracking-wider mb-8 mt-10;
+  }
+
+  h1 {
+    @apply text-5xl mt-0;
+  }
+
+  h2 {
+    @apply text-4xl py-3 border-b border-b-floral-white/20;
+  }
+
+  h3 {
+    @apply text-3xl py-3 border-b border-b-floral-white/20;
+  }
+
+  h4, h5, h6 {
+    @apply mb-6;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+
+  h6 {
+    @apply text-lg ;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  blockquote {
+    @apply py-2 px-4 bg-raisin-black mb-4;
+    
+    p {
+      @apply mb-0;
+    }
+  }
+
+  code {
+    @apply py-1 px-2 bg-raisin-black rounded;
+  }
+
+  pre {
+    @apply py-2 px-2 bg-raisin-black mb-4;
+  }
+
+  ul, ol {
+    @apply mb-4 ml-8;
+
+    p {
+      @apply mb-2;
+    }
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+
+    li {
+      @apply mb-2;
+    }
+  }
+}
