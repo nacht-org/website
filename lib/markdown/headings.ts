@@ -46,7 +46,7 @@ function parseMatch(match: string): HeadingData {
 
   return {
     text,
-    depth: (6 - declaration.length + 1) as HeadingDepth,
+    depth: declaration.length as HeadingDepth,
     slug: slugify(text),
   };
 }

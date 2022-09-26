@@ -7,34 +7,47 @@ import remarkGfm from "remark-gfm";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import TimeAgo from "react-timeago";
 
-import { guideSlugs, GuideData, slugsToPath, guideData } from "../../lib/guide";
+import {
+  guideSlugs,
+  GuideData,
+  slugsToPath,
+  guideData,
+  GuideHeading,
+  guideHeadings,
+} from "../../lib/guide";
 import { mdBody } from "../../lib/markdown";
-import { EditFilled } from "@ant-design/icons";
-import { editPath, website } from "../../lib/website";
+import { EditFilled, ReadFilled } from "@ant-design/icons";
+import { editPath } from "../../lib/website";
+import GuideNav from "../../components/guide/GuideNav";
 
 interface Props {
   guide: GuideData;
   markdown: string;
+  headings: GuideHeading[];
 }
 
 interface Params extends ParsedUrlQuery {
   slug: string[];
 }
 
-const Guide: NextPage<Props> = ({ guide, markdown }) => {
+const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
   return (
     <>
       <Head>
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
-      <main className="flex gap-12 w-full justify-center">
-        <div className="hidden md:flex flex-col gap-2">
-          <a className="bg-raisin-black hover:bg-raisin-black/80 py-2 px-4 rounded shadow hover:shadow-md">
-            Getting Started
-          </a>
+      <main className="flex gap-12 w-full justify-center px-4">
+        <div className="hidden md:flex flex-col gap-2 container max-w-[14rem]">
+          <h3 className="text-lg font-bold px-4 mb-2 flex items-center gap-2">
+            <ReadFilled className="flex" />
+            Guides
+          </h3>
+          {headings.map((guide) => (
+            <GuideNav guide={guide} />
+          ))}
         </div>
-        <div className=" markdown container max-w-3xl px-4 md:px-0">
+        <div className="markdown container max-w-3xl">
           <ReactMarkdown
             children={markdown}
             remarkPlugins={[remarkGfm]}
@@ -63,6 +76,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
     props: {
       guide: guideData(path),
       markdown: mdBody(path),
+      headings: guideHeadings(),
     },
   };
 };

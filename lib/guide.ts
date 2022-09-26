@@ -1,5 +1,12 @@
 import glob from "glob";
-import { FileMeta, parseMeta } from "./markdown";
+import {
+  FileMeta,
+  HeadingData,
+  markdownHeadings,
+  mdBody,
+  parseFront,
+  parseMeta,
+} from "./markdown";
 import { RouteData } from "./route";
 
 /**
@@ -61,4 +68,24 @@ export function guideSlugs(): string[][] {
 export function guideData(path: string): GuideData {
   const data = parseMeta<GuideFront, GuideFront & FileMeta>(path);
   return { ...data, slugs: pathToSlugs(data.path) };
+}
+
+/**
+ * Heading data of a guide markdown file.
+ */
+export interface GuideHeading {
+  front: GuideFront;
+  headings: HeadingData[];
+  route: RouteData;
+}
+
+/**
+ * @returns All the guide headings with frontmatter data
+ */
+export function guideHeadings(): GuideHeading[] {
+  return paths().map((path) => ({
+    front: parseFront(path),
+    headings: markdownHeadings(mdBody(path)),
+    route: { slugs: pathToSlugs(path) },
+  }));
 }
