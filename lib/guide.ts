@@ -1,4 +1,3 @@
-import glob from "glob";
 import {
   FileMeta,
   HeadingData,
@@ -8,6 +7,14 @@ import {
   parseMeta,
 } from "./markdown";
 import { RouteData } from "./route";
+
+/**
+ * Paths to all the guides
+ */
+const paths = [
+  "markdown/guide/getting-started.md",
+  "markdown/guide/contributing.md",
+];
 
 /**
  * The frontmatter data from a guide markdown file.
@@ -23,13 +30,6 @@ export interface GuideFront {
  * with file metadata and route data.
  */
 export type GuideData = GuideFront & FileMeta & RouteData;
-
-/**
- * @returns Paths to all the guide markdown files.
- */
-function paths() {
-  return glob.sync("markdown/guide/**/*.md");
-}
 
 /**
  * Convert a path to a guide to a slug
@@ -57,7 +57,7 @@ export function slugsToPath(slugs: string[]): string {
  * @returns All the guides as route slugs
  */
 export function guideSlugs(): string[][] {
-  return paths().map(pathToSlugs);
+  return paths.map(pathToSlugs);
 }
 
 /**
@@ -84,11 +84,9 @@ export interface GuideHeading {
  * @returns All the guide headings with frontmatter data
  */
 export function guideHeadings(): GuideHeading[] {
-  return paths()
-    .map((path) => ({
-      front: parseFront<GuideFront>(path),
-      headings: markdownHeadings(mdBody(path)),
-      route: { slugs: pathToSlugs(path) },
-    }))
-    .sort((a, b) => a.front.key - b.front.key);
+  return paths.map((path) => ({
+    front: parseFront<GuideFront>(path),
+    headings: markdownHeadings(mdBody(path)),
+    route: { slugs: pathToSlugs(path) },
+  }));
 }

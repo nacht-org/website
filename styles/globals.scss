@@ -4,12 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+body {
   @apply text-eerie-black bg-floral-white;
 }
 
 a {
-  @apply dark:text-eerie-black dark:hover:text-eerie-black/80 transition-colors cursor-pointer;
+  @apply cursor-pointer;
 }
 
 a.inline-link {

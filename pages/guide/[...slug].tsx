@@ -16,10 +16,10 @@ import {
   guideHeadings,
 } from "../../lib/guide";
 import { mdBody } from "../../lib/markdown";
-import { EditFilled, ReadFilled } from "@ant-design/icons";
+import { EditFilled } from "@ant-design/icons";
 import { editPath } from "../../lib/website";
-import GuideNav from "../../components/guide/GuideNav";
 import Footer from "../../components/Footer";
+import { IndentedSideTile, SideTile } from "../../components/Side";
 
 interface Props {
   guide: GuideData;
@@ -41,9 +41,22 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
       <div className="flex">
         <aside className="h-screen sticky top-0 w-72 overflow-auto border-r hidden md:block">
           <nav>
-            <div className="w-full bg-eerie-black text-floral-white px-4 py-3">
-              Getting Started
-            </div>
+            <SideTile title="Getting started" selected href="" />
+            <SideTile title="Not selected" href="" />
+            <IndentedSideTile title="This has children">
+              <SideTile title="Not selected" href="" indent />
+              <SideTile title="Not selected" href="" indent />
+            </IndentedSideTile>
+            <IndentedSideTile title="This too has children">
+              <SideTile title="Not selected" href="" indent />
+              <SideTile title="Not selected" href="" indent />
+            </IndentedSideTile>
+            <SideTile title="Does not have children" href="" />
+
+            <IndentedSideTile title="This has a secret">
+              <SideTile title="Not selected" href="" indent />
+              <SideTile title="Not selected" href="" indent />
+            </IndentedSideTile>
           </nav>
         </aside>
 

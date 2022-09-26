@@ -1,7 +1,6 @@
 ---
 title: Contributing
 description: This guide shows how you can get started contributing to pronomia.
-key: 1
 ---
 
 ## Introduction
