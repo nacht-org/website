@@ -15,7 +15,7 @@ const Header: FunctionComponent = () => {
         </a>
       </h1>
       <div className="flex flex-row items-center gap-8 ml-auto">
-        <HeaderLink href="/guides/getting-started">Getting Started</HeaderLink>
+        <HeaderLink href="/guide/getting-started">Getting Started</HeaderLink>
         <HeaderLink href="">Guides</HeaderLink>
         <HeaderLink href="">Privacy Policy</HeaderLink>
         <div className="h-4 border-r hidden md:block"></div>

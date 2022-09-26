@@ -17,7 +17,7 @@ const Home: NextPage = () => {
           customizable.
         </span>
         <div className="flex flex-col md:flex-row items-center gap-4">
-          <Button href="/guides/getting-started">Getting Started</Button>
+          <Button href="/guide/getting-started">Getting Started</Button>
           <Button className="flex items-center gap-2" href="" secondary>
             <GithubOutlined className="flex" /> Source Code
           </Button>
