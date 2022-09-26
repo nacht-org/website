@@ -20,7 +20,7 @@ const Button: FunctionComponent<Props> = ({
   }
 
   const _className = [
-    "px-8 py-4 rounded shadow hover:shadow-md hover:text-floral-white text-lg font-bold",
+    "px-8 py-4 rounded text-floral-white shadow hover:shadow-md hover:text-floral-white text-lg font-bold",
     background,
     className ?? "",
   ].join(" ");

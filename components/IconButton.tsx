@@ -4,12 +4,13 @@ import { FunctionComponent, ReactNode } from "react";
 interface Props {
   href: string;
   children?: ReactNode;
+  className?: string;
 }
 
-const IconButton: FunctionComponent<Props> = ({ href, children }) => {
+const IconButton: FunctionComponent<Props> = (props) => {
   return (
-    <Link href={href} passHref>
-      <a className="text-2xl">{children}</a>
+    <Link href={props.href} passHref>
+      <a className={`text-2xl ${props.className ?? ""}`}>{props.children}</a>
     </Link>
   );
 };

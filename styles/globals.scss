@@ -4,12 +4,36 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-eerie-black text-floral-white;
+* {
+  @apply text-eerie-black bg-floral-white;
 }
 
 a {
-  @apply dark:text-floral-white dark:hover:text-floral-white/80 transition-colors cursor-pointer;
+  @apply dark:text-eerie-black dark:hover:text-eerie-black/80 transition-colors cursor-pointer;
+}
+
+a.inline-link {
+  @apply underline;
+}
+
+/* width */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-eerie-black/50;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-eerie-black/80;
 }
 
 .markdown {

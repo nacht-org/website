@@ -11,7 +11,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ParallaxProvider>
         <Component {...pageProps} />
       </ParallaxProvider>
-      <Footer />
     </div>
   );
 }
