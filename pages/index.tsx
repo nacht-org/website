@@ -3,10 +3,19 @@ import ShowcaseSection from "../components/showcases/ShowcaseSection";
 import { GithubOutlined } from "@ant-design/icons";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>Promonia</title>
+        <meta
+          name="description"
+          content="Free and open source novel reader designed to be user friendly and
+            customizable"
+        />
+      </Head>
       <div className="h-full w-full">
         <div className="mb-32"></div>
 
