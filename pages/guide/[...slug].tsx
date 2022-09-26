@@ -60,25 +60,32 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
           </nav>
         </aside>
 
-        <main className="markdown container max-w-3xl m-8 mb-0">
-          <h1>{guide.title}</h1>
-          <div className="flex items-center gap-8 text-sm">
-            <a className="flex gap-2 items-center" href={editPath(guide.path)}>
-              <EditFilled className="flex" /> Edit page
-            </a>
-            <span className="">
-              Last updated:{" "}
-              <TimeAgo date={guide.dateModified} className="ml-1" />
-            </span>
+        <div className="container max-w-3xl w-full">
+          <main className="markdown m-8 mb-0">
+            <h1>{guide.title}</h1>
+            <div className="flex items-center gap-8 text-sm">
+              <a
+                className="flex gap-2 items-center"
+                href={editPath(guide.path)}
+              >
+                <EditFilled className="flex" /> Edit page
+              </a>
+              <span className="">
+                Last updated:{" "}
+                <TimeAgo date={guide.dateModified} className="ml-1" />
+              </span>
+            </div>
+            <ReactMarkdown
+              children={markdown}
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeAutolinkHeadings]}
+            ></ReactMarkdown>
+            <hr className="border-t-floral-white/20 my-8" />
+          </main>
+          <div className="m-4">
+            <Footer auto={false} />
           </div>
-          <ReactMarkdown
-            children={markdown}
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeAutolinkHeadings]}
-          ></ReactMarkdown>
-          <hr className="border-t-floral-white/20 my-8" />
-          <Footer auto={false} />
-        </main>
+        </div>
       </div>
     </>
   );
