@@ -12,7 +12,7 @@ const Footer: FunctionComponent<Props> = ({ auto }) => {
   return (
     <footer className="border-t p-4 mt-4">
       <div
-        className={`container max-w-5xl mx-auto flex flex-col gap-2 ${autoText}`}
+        className={`container max-w-5xl mx-auto flex flex-col gap-4 pt-4 ${autoText}`}
       >
         <div className={`flex items-center text-md ${autoJustify}`}>
           <CodeLink />
