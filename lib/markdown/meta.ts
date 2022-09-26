@@ -1,5 +1,6 @@
 import frontMatter from "front-matter";
 import fs from "fs";
+import { lastModified } from "../command";
 
 /**
  * Information that is related to the file itself
@@ -23,6 +24,6 @@ export function parseMeta<F, T extends F & FileMeta>(path: string): T {
   return {
     ...attributes,
     path,
-    dateModified: fs.statSync(path).mtime.toISOString(),
+    dateModified: lastModified(path).toISOString(),
   } as T;
 }
