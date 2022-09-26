@@ -52,6 +52,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
           ))}
         </div>
         <div className="markdown container max-w-3xl">
+          <h1>{guide.title}</h1>
           <ReactMarkdown
             children={markdown}
             remarkPlugins={[remarkGfm]}
