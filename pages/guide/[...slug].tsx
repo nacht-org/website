@@ -20,6 +20,7 @@ import { EditFilled } from "@ant-design/icons";
 import { editPath } from "../../lib/website";
 import Footer from "../../components/Footer";
 import { IndentedSideTile, SideTile } from "../../components/Side";
+import { routePath } from "../../lib/route";
 
 interface Props {
   guide: GuideData;
@@ -41,22 +42,13 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
       <div className="flex">
         <aside className="h-screen sticky top-0 w-72 overflow-auto border-r hidden md:block">
           <nav>
-            <SideTile title="Getting started" selected href="" />
-            <SideTile title="Not selected" href="" />
-            <IndentedSideTile title="This has children">
-              <SideTile title="Not selected" href="" indent />
-              <SideTile title="Not selected" href="" indent />
-            </IndentedSideTile>
-            <IndentedSideTile title="This too has children">
-              <SideTile title="Not selected" href="" indent />
-              <SideTile title="Not selected" href="" indent />
-            </IndentedSideTile>
-            <SideTile title="Does not have children" href="" />
-
-            <IndentedSideTile title="This has a secret">
-              <SideTile title="Not selected" href="" indent />
-              <SideTile title="Not selected" href="" indent />
-            </IndentedSideTile>
+            {headings.map((g) => (
+              <SideTile
+                key={g.path}
+                title={g.front.title}
+                href={`/guide${routePath(...g.route.slugs)}`}
+              />
+            ))}
           </nav>
         </aside>
 

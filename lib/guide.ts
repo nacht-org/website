@@ -1,11 +1,4 @@
-import {
-  FileMeta,
-  HeadingData,
-  markdownHeadings,
-  mdBody,
-  parseFront,
-  parseMeta,
-} from "./markdown";
+import { FileMeta, parseFront, parseMeta } from "./markdown";
 import { RouteData } from "./route";
 
 /**
@@ -22,7 +15,6 @@ const paths = [
 export interface GuideFront {
   title: string;
   description: string;
-  key: number;
 }
 
 /**
@@ -76,7 +68,7 @@ export function guideData(path: string): GuideData {
  */
 export interface GuideHeading {
   front: GuideFront;
-  headings: HeadingData[];
+  path: string;
   route: RouteData;
 }
 
@@ -85,8 +77,8 @@ export interface GuideHeading {
  */
 export function guideHeadings(): GuideHeading[] {
   return paths.map((path) => ({
+    path,
     front: parseFront<GuideFront>(path),
-    headings: markdownHeadings(mdBody(path)),
     route: { slugs: pathToSlugs(path) },
   }));
 }
