@@ -19,6 +19,7 @@ import { mdBody } from "../../lib/markdown";
 import { EditFilled, ReadFilled } from "@ant-design/icons";
 import { editPath } from "../../lib/website";
 import GuideNav from "../../components/guide/GuideNav";
+import Footer from "../../components/Footer";
 
 interface Props {
   guide: GuideData;
@@ -37,21 +38,16 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
-      <main className="flex gap-12 w-full justify-center px-4">
-        <div className="hidden md:flex flex-col gap-2 container max-w-[14rem]">
-          <h3 className="text-lg font-bold px-4 mb-2 flex items-center gap-2">
-            <ReadFilled className="flex" />
-            Guides
-          </h3>
-          {headings.map((guideHeading) => (
-            <GuideNav
-              key={guideHeading.route.slugs.join("/")}
-              guide={guideHeading}
-              expanded={guide.key === guideHeading.front.key}
-            />
-          ))}
-        </div>
-        <div className="markdown container max-w-3xl">
+      <div className="flex">
+        <aside className="h-screen sticky top-0 w-72 overflow-auto border-r hidden md:block">
+          <nav>
+            <div className="w-full bg-eerie-black text-floral-white px-4 py-3">
+              Getting Started
+            </div>
+          </nav>
+        </aside>
+
+        <main className="markdown container max-w-3xl m-8 mb-0">
           <h1>{guide.title}</h1>
           <div className="flex items-center gap-8 text-sm">
             <a className="flex gap-2 items-center" href={editPath(guide.path)}>
@@ -68,8 +64,9 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
             rehypePlugins={[rehypeAutolinkHeadings]}
           ></ReactMarkdown>
           <hr className="border-t-floral-white/20 my-8" />
-        </div>
-      </main>
+          <Footer auto={false} />
+        </main>
+      </div>
     </>
   );
 };
@@ -92,3 +89,19 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 
 export default Guide;
+
+{
+  /* <div className="hidden md:flex flex-col gap-2 container max-w-[14rem]">
+            <h3 className="text-lg font-bold px-4 mb-2 flex items-center gap-2">
+              <ReadFilled className="flex" />
+              Guides
+            </h3>
+            {headings.map((guideHeading) => (
+              <GuideNav
+                key={guideHeading.route.slugs.join("/")}
+                guide={guideHeading}
+                expanded={guide.key === guideHeading.front.key}
+              />
+            ))}
+          </div> */
+}
