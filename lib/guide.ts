@@ -15,6 +15,7 @@ import { RouteData } from "./route";
 export interface GuideFront {
   title: string;
   description: string;
+  key: number;
 }
 
 /**
@@ -83,9 +84,11 @@ export interface GuideHeading {
  * @returns All the guide headings with frontmatter data
  */
 export function guideHeadings(): GuideHeading[] {
-  return paths().map((path) => ({
-    front: parseFront(path),
-    headings: markdownHeadings(mdBody(path)),
-    route: { slugs: pathToSlugs(path) },
-  }));
+  return paths()
+    .map((path) => ({
+      front: parseFront<GuideFront>(path),
+      headings: markdownHeadings(mdBody(path)),
+      route: { slugs: pathToSlugs(path) },
+    }))
+    .sort((a, b) => a.front.key - b.front.key);
 }

@@ -43,8 +43,12 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
             <ReadFilled className="flex" />
             Guides
           </h3>
-          {headings.map((guide) => (
-            <GuideNav guide={guide} />
+          {headings.map((guideHeading) => (
+            <GuideNav
+              key={guideHeading.route.slugs.join("/")}
+              guide={guideHeading}
+              expanded={guide.key === guideHeading.front.key}
+            />
           ))}
         </div>
         <div className="markdown container max-w-3xl">

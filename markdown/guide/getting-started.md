@@ -1,6 +1,7 @@
 ---
 title: Getting started
 description: A post about getting started with using pronomia
+key: 0
 ---
 
 # Getting started

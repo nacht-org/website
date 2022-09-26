@@ -7,9 +7,10 @@ import IndentedLink from "./IndentedLink";
 
 interface Props {
   guide: GuideHeading;
+  expanded: boolean;
 }
 
-const GuideNav: FunctionComponent<Props> = ({ guide }) => {
+const GuideNav: FunctionComponent<Props> = ({ guide, expanded }) => {
   const route = routePath(...guide.route.slugs);
 
   return (
@@ -21,11 +22,16 @@ const GuideNav: FunctionComponent<Props> = ({ guide }) => {
           </a>
         </Link>
       </li>
-      {guide.headings
-        .filter((heading) => heading.depth > 1)
-        .map((heading) => (
-          <GuideLink heading={heading} route={route} />
-        ))}
+      {expanded &&
+        guide.headings
+          .filter((heading) => heading.depth > 1)
+          .map((heading) => (
+            <GuideLink
+              key={`${route}#${heading.slug}`}
+              heading={heading}
+              route={route}
+            />
+          ))}
     </ul>
   );
 };

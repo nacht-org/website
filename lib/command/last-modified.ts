@@ -10,7 +10,12 @@ export function lastModified(path: string): Date {
     encoding: "utf-8",
   });
 
-  const timeStamp = parseInt(timeStampString);
+  // This woudnt be true in production but is necessary in development
+  // as a file may not yet have been commited
+  if (timeStampString.length === 0) {
+    return new Date(Date.now());
+  }
 
+  const timeStamp = parseInt(timeStampString);
   return new Date(timeStamp * 1000);
 }
