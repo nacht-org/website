@@ -14,7 +14,7 @@ a {
 
 .markdown {
   h1, h2, h3, h4, h5, h6 {
-    @apply font-light tracking-wider mb-4 md:mb-8 mt-4 md:mt-10;
+    @apply font-extrabold mb-4 mt-4 md:mt-8 md:mb-4;
   }
 
   h1 {

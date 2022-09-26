@@ -53,21 +53,21 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         </div>
         <div className="markdown container max-w-3xl">
           <h1>{guide.title}</h1>
+          <div className="flex items-center gap-8 text-sm">
+            <a className="flex gap-2 items-center" href={editPath(guide.path)}>
+              <EditFilled className="flex" /> Edit page
+            </a>
+            <span className="">
+              Last updated:{" "}
+              <TimeAgo date={guide.dateModified} className="ml-1" />
+            </span>
+          </div>
           <ReactMarkdown
             children={markdown}
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeAutolinkHeadings]}
           ></ReactMarkdown>
           <hr className="border-t-floral-white/20 my-8" />
-          <div className="flex justify-between">
-            <span>
-              Last updated:{" "}
-              <TimeAgo date={guide.dateModified} className="ml-1" />
-            </span>
-            <a className="flex gap-2 items-center" href={editPath(guide.path)}>
-              <EditFilled className="flex" /> Improve this page
-            </a>
-          </div>
         </div>
       </main>
     </>
