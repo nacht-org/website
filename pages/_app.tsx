@@ -1,17 +1,13 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { ParallaxProvider } from "react-scroll-parallax";
-import Header from "../components/header/Header";
-import Footer from "../components/Footer";
+import MainLayout from "../components/layouts/MainLayout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
-      <Header />
-      <ParallaxProvider>
-        <Component {...pageProps} />
-      </ParallaxProvider>
-    </div>
+    <ParallaxProvider>
+      <Component {...pageProps} />
+    </ParallaxProvider>
   );
 }
 

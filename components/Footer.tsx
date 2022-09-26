@@ -2,12 +2,12 @@ import { FunctionComponent } from "react";
 import CodeLink from "./header/CodeLink";
 
 interface Props {
-  auto: boolean;
+  responsive?: boolean;
 }
 
-const Footer: FunctionComponent<Props> = ({ auto }) => {
-  const autoText = auto ? "md:text-center" : "";
-  const autoJustify = auto ? "md:justify-center" : "";
+const Footer: FunctionComponent<Props> = ({ responsive = false }) => {
+  const autoText = responsive ? "md:text-center" : "";
+  const autoJustify = responsive ? "md:justify-center" : "";
 
   return (
     <footer className="border-t p-4 mt-4">

@@ -83,7 +83,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
             <hr className="border-t-floral-white/20 my-8" />
           </main>
           <div className="m-4">
-            <Footer auto={false} />
+            <Footer />
           </div>
         </div>
       </div>
