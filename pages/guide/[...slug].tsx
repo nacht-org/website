@@ -19,8 +19,9 @@ import { mdBody } from "../../lib/markdown";
 import { EditFilled } from "@ant-design/icons";
 import { editPath } from "../../lib/website";
 import Footer from "../../components/Footer";
-import { IndentedSideTile, SideTile } from "../../components/Side";
+import { SideTile } from "../../components/Side";
 import { routePath } from "../../lib/route";
+import { useRouter } from "next/router";
 
 interface Props {
   guide: GuideData;
@@ -33,6 +34,8 @@ interface Params extends ParsedUrlQuery {
 }
 
 const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -42,13 +45,18 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
       <div className="flex">
         <aside className="h-screen sticky top-0 w-72 overflow-auto border-r hidden md:block">
           <nav>
-            {headings.map((g) => (
-              <SideTile
-                key={g.path}
-                title={g.front.title}
-                href={`/guide${routePath(...g.route.slugs)}`}
-              />
-            ))}
+            {headings.map((g) => {
+              const href = `/guide${routePath(...g.route.slugs)}`;
+
+              return (
+                <SideTile
+                  key={g.path}
+                  title={g.front.title}
+                  href={href}
+                  selected={router.asPath.startsWith(href)}
+                />
+              );
+            })}
           </nav>
         </aside>
 
