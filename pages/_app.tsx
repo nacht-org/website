@@ -6,7 +6,9 @@ import MainLayout from "../components/layouts/MainLayout";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ParallaxProvider>
-      <Component {...pageProps} />
+      <MainLayout>
+        <Component {...pageProps} />
+      </MainLayout>
     </ParallaxProvider>
   );
 }

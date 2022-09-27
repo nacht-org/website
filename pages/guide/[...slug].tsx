@@ -43,7 +43,6 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
-      <Header className="sticky top-0" />
       <div className="flex relative">
         {/* NavBar */}
         <aside

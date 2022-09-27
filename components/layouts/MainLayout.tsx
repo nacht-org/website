@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { FunctionComponent, ReactNode } from "react";
-import Footer from "../Footer";
-import Header from "../header/Header";
+import Header, { HeaderProps } from "../header/Header";
 import MainActions from "../header/MainActions";
 
 interface Props {
@@ -13,13 +12,22 @@ const MainLayout: FunctionComponent<Props> = ({ children }) => {
 
   return (
     <>
-      <Header>
+      <Header {...headerProps(router.asPath)}>
         <MainActions />
       </Header>
       {children}
-      <Footer responsive />
     </>
   );
 };
+
+function headerProps(path: string): HeaderProps {
+  if (path.startsWith("/guide/")) {
+    return {
+      className: "sticky top-0",
+    };
+  } else {
+    return {};
+  }
+}
 
 export default MainLayout;

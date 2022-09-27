@@ -1,14 +1,14 @@
 import { FunctionComponent, ReactNode } from "react";
-import CodeLink from "./CodeLink";
-import DownloadLink from "./DownloadLink";
-import HeaderLink from "./HeaderLink";
 
-interface Props {
+export interface HeaderProps {
   className?: string;
   children?: ReactNode;
 }
 
-const Header: FunctionComponent<Props> = ({ className = "", children }) => {
+const Header: FunctionComponent<HeaderProps> = ({
+  className = "",
+  children,
+}) => {
   return (
     <header
       className={`flex items-center z-20 border-b bg-floral-white h-16 ${className} `}

@@ -3,12 +3,11 @@ import ShowcaseSection from "../components/showcases/ShowcaseSection";
 import { GithubOutlined } from "@ant-design/icons";
 import Button from "../components/Button";
 import Head from "next/head";
-import MainLayout from "../components/layouts/MainLayout";
 import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   return (
-    <MainLayout>
+    <>
       <Head>
         <title>Promonia</title>
         <meta
@@ -38,7 +37,8 @@ const Home: NextPage = () => {
 
         <ShowcaseSection />
       </div>
-    </MainLayout>
+      <Footer responsive />
+    </>
   );
 };
 
