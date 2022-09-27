@@ -41,10 +41,10 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
+      <GuideSideBar guides={headings} />
       <div className="flex">
-        <GuideSideBar guides={headings} />
-        <div className="w-full overflow-y-auto ml-0 lg:ml-72">
-          <div className="container max-w-3xl w-full">
+        <div className="w-full overflow-y-auto ml-0 lg:ml-72 xl:ml-0">
+          <div className="container max-w-3xl w-full xl:mx-auto">
             <GuideContent guide={guide} content={markdown} />
             <div className="lg:m-4">
               <Footer />
