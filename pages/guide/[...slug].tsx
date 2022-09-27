@@ -22,6 +22,7 @@ import Footer from "../../components/Footer";
 import { SideTile } from "../../components/Side";
 import { routePath } from "../../lib/route";
 import { useRouter } from "next/router";
+import Header from "../../components/header/Header";
 
 interface Props {
   guide: GuideData;
@@ -42,48 +43,53 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
-      <div className="flex">
-        <aside className="h-screen sticky top-0 w-72 overflow-auto border-r hidden md:block">
-          <nav>
-            {headings.map((g) => {
-              const href = `/guide${routePath(...g.route.slugs)}`;
+      <div className="flex flex-col h-screen">
+        <Header />
+        <div className="flex flex-1 overflow-hidden">
+          <aside className="shrink-0 h-full w-72 overflow-y-auto border-r hidden md:block">
+            <nav>
+              {headings.map((g) => {
+                const href = `/guide${routePath(...g.route.slugs)}`;
 
-              return (
-                <SideTile
-                  key={g.path}
-                  title={g.front.title}
-                  href={href}
-                  selected={router.asPath.startsWith(href)}
-                />
-              );
-            })}
-          </nav>
-        </aside>
+                return (
+                  <SideTile
+                    key={g.path}
+                    title={g.front.title}
+                    href={href}
+                    selected={router.asPath.startsWith(href)}
+                  />
+                );
+              })}
+            </nav>
+          </aside>
 
-        <div className="container max-w-3xl w-full">
-          <main className="markdown m-8 mb-0">
-            <h1>{guide.title}</h1>
-            <div className="flex items-center gap-8 text-sm">
-              <a
-                className="flex gap-2 items-center"
-                href={editPath(guide.path)}
-              >
-                <EditFilled className="flex" /> Edit page
-              </a>
-              <span className="">
-                Last updated:{" "}
-                <TimeAgo date={guide.dateModified} className="ml-1" />
-              </span>
+          <div className="w-full overflow-y-auto">
+            <div className="container max-w-3xl w-full">
+              <main className="markdown m-8 mb-0">
+                <h1>{guide.title}</h1>
+                <div className="flex items-center gap-8 text-sm">
+                  <a
+                    className="flex gap-2 items-center"
+                    href={editPath(guide.path)}
+                  >
+                    <EditFilled className="flex" /> Edit page
+                  </a>
+                  <span className="">
+                    Last updated:{" "}
+                    <TimeAgo date={guide.dateModified} className="ml-1" />
+                  </span>
+                </div>
+                <ReactMarkdown
+                  children={markdown}
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeAutolinkHeadings]}
+                ></ReactMarkdown>
+                <hr className="border-t-floral-white/20 my-8" />
+              </main>
+              <div className="m-4">
+                <Footer />
+              </div>
             </div>
-            <ReactMarkdown
-              children={markdown}
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeAutolinkHeadings]}
-            ></ReactMarkdown>
-            <hr className="border-t-floral-white/20 my-8" />
-          </main>
-          <div className="m-4">
-            <Footer />
           </div>
         </div>
       </div>

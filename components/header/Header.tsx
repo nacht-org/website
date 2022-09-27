@@ -11,12 +11,14 @@ interface Props {
 const Header: FunctionComponent<Props> = ({ className = "", children }) => {
   return (
     <header
-      className={`${className} flex items-center p-4 z-20 border-b bg-floral-white`}
+      className={`flex items-center z-20 border-b bg-floral-white h-16 ${className} `}
     >
-      <h1 className="font-display text-2xl">
+      <h1 className="font-display text-2xl m-4">
         <a href="/">Pronomia</a>
       </h1>
-      <div className="flex flex-row items-center gap-8 ml-auto">{children}</div>
+      <div className="flex flex-row items-center gap-8 m-4 ml-auto">
+        {children}
+      </div>
     </header>
   );
 };
