@@ -19,6 +19,7 @@ const HeaderLink: FunctionComponent<Props> = ({ href, children }) => {
             color: theme.primaryColor,
           },
         })}
+        className="hidden md:block"
       >
         {children}
       </Text>

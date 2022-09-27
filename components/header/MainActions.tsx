@@ -8,7 +8,7 @@ const MainActions: FunctionComponent = () => {
     <Group spacing="md" align="center">
       <HeaderLink href="/guide/getting-started">Getting Started</HeaderLink>
       <HeaderLink href="#null">Privacy Policy</HeaderLink>
-      <Divider orientation="vertical" my="xs" />
+      <Divider orientation="vertical" my="xs" className="hidden md:block" />
       <CodeLink />
     </Group>
   );

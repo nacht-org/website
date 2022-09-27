@@ -3,8 +3,8 @@ import Head from "next/head";
 import { AppShell, Stack, Title, Text, Paper } from "@mantine/core";
 import MainActions from "../components/header/MainActions";
 import Header from "../components/header/Header";
-import ShowcaseSection from "../components/showcases/ShowcaseSection";
 import Footer from "../components/Footer";
+import Showcase from "../components/Showcase";
 
 const Home: NextPage = () => {
   return (
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
             </Header>
           }
         >
-          <Stack align="center" className="mt-32">
+          <Stack align="center" className="mt-64 mb-8">
             <Title order={1} weight="normal" className="font-display text-7xl">
               Pronomia
             </Title>
@@ -35,10 +35,9 @@ const Home: NextPage = () => {
               align="center"
               span
             >
-              Free and open source novel reader designed to be user friendly and
-              customizable.
+              Free and open source novel reader
             </Text>
-            <ShowcaseSection />
+            <Showcase />
           </Stack>
         </AppShell>
       </Paper>
