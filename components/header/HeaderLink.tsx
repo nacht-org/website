@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FunctionComponent, ReactNode } from "react";
+import { Text, MantineTheme } from "@mantine/core";
 
 interface Props {
   href: string;
@@ -9,7 +10,18 @@ interface Props {
 const HeaderLink: FunctionComponent<Props> = ({ href, children }) => {
   return (
     <Link href={href} passHref>
-      <a className="hidden md:block">{children}</a>
+      <Text
+        component="a"
+        size="md"
+        sx={(theme) => ({
+          verticalAlign: "middle",
+          "&:hover": {
+            color: theme.primaryColor,
+          },
+        })}
+      >
+        {children}
+      </Text>
     </Link>
   );
 };

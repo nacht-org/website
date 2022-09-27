@@ -1,15 +1,19 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { ParallaxProvider } from "react-scroll-parallax";
-import Layout from "../components/layouts/Layout";
+import { MantineProvider } from "@mantine/core";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ParallaxProvider>
-      <Layout>
+    <MantineProvider
+      theme={{
+        fontFamily: "Noto Sans, sans-serif",
+      }}
+    >
+      <ParallaxProvider>
         <Component {...pageProps} />
-      </Layout>
-    </ParallaxProvider>
+      </ParallaxProvider>
+    </MantineProvider>
   );
 }
 

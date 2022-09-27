@@ -7,16 +7,18 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xs: "576px",
+      sm: "768px",
+      md: "992px",
+      lg: "1200px",
+      xl: "1400px",
+    },
     fontFamily: {
       display: ["Anton", ...defaultTheme.fontFamily.sans],
     },
     extend: {
-      colors: {
-        "floral-white": "#FFFCF2",
-        "raisin-black": "#191923",
-        cardinal: "#ad343e",
-        "eerie-black": "#141414",
-      },
+      colors: {},
       aspectRatio: {
         "9/16": "9 / 16",
       },
