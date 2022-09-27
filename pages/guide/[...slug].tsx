@@ -3,9 +3,6 @@ import Head from "next/head";
 
 import { ParsedUrlQuery } from "querystring";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import TimeAgo from "react-timeago";
 
 import {
   guideSlugs,
@@ -19,10 +16,11 @@ import { mdBody } from "../../lib/markdown";
 import { EditFilled } from "@ant-design/icons";
 import { editPath } from "../../lib/website";
 import Footer from "../../components/Footer";
-import { SideTile } from "../../components/Side";
 import { routePath } from "../../lib/route";
 import { useRouter } from "next/router";
 import Header from "../../components/header/Header";
+import GuideSideBar from "../../components/guide/GuideSideBar";
+import GuideContent from "../../components/guide/GuideContent";
 
 interface Props {
   guide: GuideData;
@@ -43,52 +41,11 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
-      <div className="flex relative">
-        {/* NavBar */}
-        <aside
-          className="fixed top-16 shrink-0 h-[calc(100vh-theme(spacing.16))] w-72 border-r overflow-auto
-                     hidden lg:block"
-        >
-          <nav>
-            {headings.map((g) => {
-              const href = `/guide${routePath(...g.route.slugs)}`;
-
-              return (
-                <SideTile
-                  key={g.path}
-                  title={g.front.title}
-                  href={href}
-                  selected={router.asPath.startsWith(href)}
-                />
-              );
-            })}
-          </nav>
-        </aside>
-
-        {/* Content */}
+      <div className="flex">
+        <GuideSideBar guides={headings} />
         <div className="w-full overflow-y-auto ml-0 lg:ml-72">
           <div className="container max-w-3xl w-full">
-            <main className="markdown m-4 lg:m-8 mb-0">
-              <h1>{guide.title}</h1>
-              <div className="flex items-center gap-8 text-sm">
-                <a
-                  className="flex gap-2 items-center"
-                  href={editPath(guide.path)}
-                >
-                  <EditFilled className="flex" /> Edit page
-                </a>
-                <span className="">
-                  Last updated:{" "}
-                  <TimeAgo date={guide.dateModified} className="ml-1" />
-                </span>
-              </div>
-              <ReactMarkdown
-                children={markdown}
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeAutolinkHeadings]}
-              ></ReactMarkdown>
-              <hr className="border-t-floral-white/20 my-8" />
-            </main>
+            <GuideContent guide={guide} content={markdown} />
             <div className="lg:m-4">
               <Footer />
             </div>

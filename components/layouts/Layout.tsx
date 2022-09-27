@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-const MainLayout: FunctionComponent<Props> = ({ children }) => {
+const Layout: FunctionComponent<Props> = ({ children }) => {
   const router = useRouter();
 
   return (
@@ -30,4 +30,4 @@ function headerProps(path: string): HeaderProps {
   }
 }
 
-export default MainLayout;
+export default Layout;
