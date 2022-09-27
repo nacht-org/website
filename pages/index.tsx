@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { AppShell, Header, Title, Group, Button, Divider } from "@mantine/core";
-import Link from "next/link";
-import CodeLink from "../components/header/CodeLink";
-import HeaderLink from "../components/header/HeaderLink";
+import { AppShell, Stack, Title, Text, Paper } from "@mantine/core";
+import MainActions from "../components/header/MainActions";
+import Header from "../components/header/Header";
+import ShowcaseSection from "../components/showcases/ShowcaseSection";
+import Footer from "../components/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -16,32 +17,32 @@ const Home: NextPage = () => {
             customizable"
         />
       </Head>
-      <AppShell
-        padding="md"
-        header={
-          <Header height={60} p="md">
-            <div className="flex items-center justify-between h-full">
-              <Title
-                order={1}
-                className="font-display text-2xl"
-                weight="normal"
-              >
-                Pronomia
-              </Title>
-              <Group spacing="md" align="center">
-                <HeaderLink href="/guide/getting-started">
-                  Getting Started
-                </HeaderLink>
-                <HeaderLink href="#null">Privacy Policy</HeaderLink>
-                <Divider orientation="vertical" my="xs" />
-                <CodeLink />
-              </Group>
-            </div>
-          </Header>
-        }
-      >
-        {""}
-      </AppShell>
+      <Paper shadow="md">
+        <AppShell
+          padding="md"
+          header={
+            <Header>
+              <MainActions />
+            </Header>
+          }
+        >
+          <Stack align="center" className="mt-32">
+            <Title order={1} weight="normal" className="font-display text-7xl">
+              Pronomia
+            </Title>
+            <Text
+              className="max-w-5xl text-2xl md:text-3xl"
+              align="center"
+              span
+            >
+              Free and open source novel reader designed to be user friendly and
+              customizable.
+            </Text>
+            <ShowcaseSection />
+          </Stack>
+        </AppShell>
+      </Paper>
+      <Footer />
       {/* <div className="h-full w-full">
         <div className="mb-32"></div>
 

@@ -1,25 +1,20 @@
 import { FunctionComponent, ReactNode } from "react";
+import { Header as MantineHeader, Paper, Group, Title } from "@mantine/core";
 
 export interface HeaderProps {
-  className?: string;
   children?: ReactNode;
 }
 
-const Header: FunctionComponent<HeaderProps> = ({
-  className = "",
-  children,
-}) => {
+const Header: FunctionComponent<HeaderProps> = ({ children }) => {
   return (
-    <header
-      className={`flex items-center z-20 border-b bg-floral-white h-16 ${className} `}
-    >
-      <h1 className="font-display text-2xl m-4">
-        <a href="/">Pronomia</a>
-      </h1>
-      <div className="flex flex-row items-center gap-8 m-4 ml-auto">
+    <Paper height="4rem" p="md" component={MantineHeader}>
+      <div className="flex items-center justify-between h-full">
+        <Title order={1} className="font-display text-2xl" weight="normal">
+          Pronomia
+        </Title>
         {children}
       </div>
-    </header>
+    </Paper>
   );
 };
 

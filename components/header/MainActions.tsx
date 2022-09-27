@@ -1,18 +1,16 @@
 import { FunctionComponent } from "react";
 import CodeLink from "./CodeLink";
-import DownloadLink from "./DownloadLink";
 import HeaderLink from "./HeaderLink";
+import { Group, Divider } from "@mantine/core";
 
 const MainActions: FunctionComponent = () => {
   return (
-    <>
+    <Group spacing="md" align="center">
       <HeaderLink href="/guide/getting-started">Getting Started</HeaderLink>
-      <HeaderLink href="">Guides</HeaderLink>
-      <HeaderLink href="">Privacy Policy</HeaderLink>
-      <div className="h-8 border-r hidden md:block"></div>
-      <DownloadLink />
+      <HeaderLink href="#null">Privacy Policy</HeaderLink>
+      <Divider orientation="vertical" my="xs" />
       <CodeLink />
-    </>
+    </Group>
   );
 };
 
