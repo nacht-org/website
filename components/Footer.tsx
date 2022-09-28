@@ -25,7 +25,7 @@ const Footer: FunctionComponent<Props> = ({ center }) => {
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: -1,
+          zIndex: 1,
           backgroundColor:
             theme.colorScheme == "dark"
               ? theme.colors.dark[8]
