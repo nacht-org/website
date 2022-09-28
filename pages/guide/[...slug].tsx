@@ -17,17 +17,20 @@ import Header from "../../components/header/Header";
 import GuideContent from "../../components/guide/GuideContent";
 import {
   AppShell,
-  Container,
+  Burger,
+  Group,
+  MediaQuery,
   Navbar,
   NavLink,
   Paper,
   Stack,
-  Text,
 } from "@mantine/core";
-import MainActions from "../../components/header/MainActions";
+import HeaderActions from "../../components/header/HeaderActions";
 import Link from "next/link";
 import { routePath } from "../../lib/route";
 import Footer from "../../components/Footer";
+import { useState } from "react";
+import HeaderTitle from "../../components/header/HeaderTitle";
 
 interface Props {
   guide: GuideData;
@@ -40,6 +43,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
+  const [opened, setOpened] = useState(false);
   const router = useRouter();
 
   return (
@@ -52,9 +56,21 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         padding={0}
         header={
           <Header>
-            <MainActions />
+            <Group align="center" spacing={0}>
+              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size="sm"
+                  mr="xl"
+                />
+              </MediaQuery>
+              <HeaderTitle />
+            </Group>
+            <HeaderActions />
           </Header>
         }
+        navbarOffsetBreakpoint="sm"
         navbar={
           <Navbar
             p="md"
@@ -70,19 +86,19 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
                   ? theme.colors.dark[7]
                   : theme.colors.gray[2],
             })}
-            hidden
+            hidden={!opened}
           >
             <Stack spacing="xs">
               {headings.map((guide) => {
                 const href = `/guide${routePath(...guide.route.slugs)}`;
 
                 return (
-                  <Link href={href} passHref>
+                  <Link href={href} passHref key={guide.path}>
                     <NavLink
-                      key={guide.path}
                       label={guide.front.title}
                       active={router.asPath.startsWith(href)}
                       component="a"
+                      onClick={() => setOpened(false)}
                     />
                   </Link>
                 );

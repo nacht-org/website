@@ -1,15 +1,20 @@
 import { FunctionComponent, ReactNode } from "react";
-import { Header as MHeader, Paper, Title } from "@mantine/core";
+import { Header as MHeader, Paper, useMantineTheme } from "@mantine/core";
 
 export interface HeaderProps {
   children?: ReactNode;
 }
 
 const Header: FunctionComponent<HeaderProps> = ({ children }) => {
+  const theme = useMantineTheme();
+  const shadow = theme.colorScheme == "dark" ? "md" : undefined;
+
   return (
-    <MHeader
+    <Paper
       height={60}
       p="md"
+      component={MHeader}
+      shadow={shadow}
       sx={(theme) => ({
         borderColor:
           theme.colorScheme == "dark"
@@ -17,13 +22,8 @@ const Header: FunctionComponent<HeaderProps> = ({ children }) => {
             : theme.colors.gray[2],
       })}
     >
-      <div className="flex items-center justify-between h-full">
-        <Title order={1} className="font-display text-2xl" weight="normal">
-          Pronomia
-        </Title>
-        {children}
-      </div>
-    </MHeader>
+      <div className="flex items-center justify-between h-full">{children}</div>
+    </Paper>
   );
 };
 

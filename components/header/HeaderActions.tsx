@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import CodeLink from "./CodeLink";
 import HeaderLink from "./HeaderLink";
-import { Group, Divider } from "@mantine/core";
+import { Group, Divider, MediaQuery } from "@mantine/core";
 import ColorSchemeToggle from "./ColorSchemeToggle";
 
-const MainActions: FunctionComponent = () => {
+const HeaderActions: FunctionComponent = () => {
   return (
     <Group spacing="md" align="center">
       <HeaderLink href="/guide/getting-started">Getting Started</HeaderLink>
@@ -16,4 +16,4 @@ const MainActions: FunctionComponent = () => {
   );
 };
 
-export default MainActions;
+export default HeaderActions;

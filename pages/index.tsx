@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { AppShell, Stack, Title, Text, Paper } from "@mantine/core";
-import MainActions from "../components/header/MainActions";
+import HeaderActions from "../components/header/HeaderActions";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 import Showcase from "../components/Showcase";
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           padding="md"
           header={
             <Header>
-              <MainActions />
+              <HeaderActions />
             </Header>
           }
         >
