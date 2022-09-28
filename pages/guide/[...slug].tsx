@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 
 import { ParsedUrlQuery } from "querystring";
-import ReactMarkdown from "react-markdown";
 
 import {
   guideSlugs,
@@ -13,14 +12,25 @@ import {
   guideHeadings,
 } from "../../lib/guide";
 import { mdBody } from "../../lib/markdown";
-import { EditFilled } from "@ant-design/icons";
-import { editPath } from "../../lib/website";
-import Footer from "../../components/Footer";
-import { routePath } from "../../lib/route";
 import { useRouter } from "next/router";
 import Header from "../../components/header/Header";
-import GuideSideBar from "../../components/guide/GuideSideBar";
 import GuideContent from "../../components/guide/GuideContent";
+import {
+  AppShell,
+  Burger,
+  Group,
+  MediaQuery,
+  Navbar,
+  NavLink,
+  Paper,
+  Stack,
+} from "@mantine/core";
+import HeaderActions from "../../components/header/HeaderActions";
+import Link from "next/link";
+import { routePath } from "../../lib/route";
+import Footer from "../../components/Footer";
+import { useState } from "react";
+import HeaderTitle from "../../components/header/HeaderTitle";
 
 interface Props {
   guide: GuideData;
@@ -33,6 +43,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
+  const [opened, setOpened] = useState(false);
   const router = useRouter();
 
   return (
@@ -41,17 +52,66 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
-      <div className="flex">
-        <GuideSideBar guides={headings} />
-        <div className="w-full overflow-y-auto ml-0 lg:ml-72">
-          <div className="container max-w-3xl w-full">
-            <GuideContent guide={guide} content={markdown} />
-            <div className="lg:m-4">
-              <Footer />
-            </div>
-          </div>
-        </div>
-      </div>
+      <AppShell
+        padding={0}
+        header={
+          <Header>
+            <Group align="center" spacing={0}>
+              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                <Burger
+                  opened={opened}
+                  onClick={() => setOpened((o) => !o)}
+                  size="sm"
+                  mr="xl"
+                />
+              </MediaQuery>
+              <HeaderTitle />
+            </Group>
+            <HeaderActions />
+          </Header>
+        }
+        navbarOffsetBreakpoint="sm"
+        navbar={
+          <Navbar
+            p="md"
+            hiddenBreakpoint="sm"
+            width={{ sm: 200, lg: 260 }}
+            sx={(theme) => ({
+              backgroundColor:
+                theme.colorScheme == "dark"
+                  ? theme.colors.dark[8]
+                  : theme.white,
+              borderColor:
+                theme.colorScheme == "dark"
+                  ? theme.colors.dark[7]
+                  : theme.colors.gray[2],
+            })}
+            hidden={!opened}
+          >
+            <Stack spacing="xs">
+              {headings.map((guide) => {
+                const href = `/guide${routePath(...guide.route.slugs)}`;
+
+                return (
+                  <Link href={href} passHref key={guide.path}>
+                    <NavLink
+                      label={guide.front.title}
+                      active={router.asPath.startsWith(href)}
+                      component="a"
+                      onClick={() => setOpened(false)}
+                    />
+                  </Link>
+                );
+              })}
+            </Stack>
+          </Navbar>
+        }
+      >
+        <Paper p="xl" shadow="md" sx={{ position: "relative", zIndex: 2 }}>
+          <GuideContent guide={guide} content={markdown} />
+        </Paper>
+        <Footer />
+      </AppShell>
     </>
   );
 };

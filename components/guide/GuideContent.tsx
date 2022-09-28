@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-import { EditFilled } from "@ant-design/icons";
+import { FaEdit } from "react-icons/fa";
 import TimeAgo from "react-timeago";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -8,6 +8,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 import { editPath } from "../../lib/website";
 import { GuideData } from "../../lib/guide";
+import { Group, Title, TitleOrder, Text } from "@mantine/core";
+import InlineLink from "../InlineLink";
 
 interface Props {
   guide: GuideData;
@@ -16,22 +18,45 @@ interface Props {
 
 const GuideContent: FunctionComponent<Props> = ({ guide, content }) => {
   return (
-    <main className="markdown m-4 lg:m-8 mb-0">
-      <h1>{guide.title}</h1>
-      <div className="flex items-center gap-8 text-sm">
-        <a className="flex gap-2 items-center" href={editPath(guide.path)}>
-          <EditFilled className="flex" /> Edit page
-        </a>
-        <span className="">
+    <main>
+      <Title order={1} className="mb-1">
+        {guide.title}
+      </Title>
+      <Group align="center" spacing="lg" mb="xl">
+        <InlineLink href={editPath(guide.path)}>
+          <Text color="dimmed" size="sm">
+            <FaEdit className="inline" /> Edit page
+          </Text>
+        </InlineLink>
+        <Text color="dimmed" size="sm">
           Last updated: <TimeAgo date={guide.dateModified} className="ml-1" />
-        </span>
-      </div>
+        </Text>
+      </Group>
       <ReactMarkdown
         children={content}
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeAutolinkHeadings]}
+        components={{
+          h1: ({ node, level, ...props }) => (
+            <Title order={level as TitleOrder} {...props} />
+          ),
+          h2: ({ node, level, ...props }) => (
+            <Title order={level as TitleOrder} {...props} />
+          ),
+          h3: ({ node, level, ...props }) => (
+            <Title order={level as TitleOrder} {...props} />
+          ),
+          h4: ({ node, level, ...props }) => (
+            <Title order={level as TitleOrder} {...props} />
+          ),
+          h5: ({ node, level, ...props }) => (
+            <Title order={level as TitleOrder} {...props} />
+          ),
+          h6: ({ node, level, ...props }) => (
+            <Title order={level as TitleOrder} {...props} />
+          ),
+        }}
       ></ReactMarkdown>
-      <hr className="border-t-floral-white/20 my-8" />
     </main>
   );
 };

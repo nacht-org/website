@@ -1,14 +1,21 @@
 import Link from "next/link";
 import { FunctionComponent } from "react";
 
-import { GithubOutlined } from "@ant-design/icons";
-import IconButton from "../IconButton";
+import { FaGithub } from "react-icons/fa";
+import { ActionIcon } from "@mantine/core";
 
 const CodeLink: FunctionComponent = () => {
   return (
-    <IconButton href={"https://github.com/nacht-org/nacht"}>
-      <GithubOutlined className="flex" />
-    </IconButton>
+    <Link href="https://github.com/nacht-org/nacht" passHref>
+      <ActionIcon
+        title="Pronomia source code"
+        component="a"
+        size="lg"
+        target="_blank"
+      >
+        <FaGithub className="text-xl" />
+      </ActionIcon>
+    </Link>
   );
 };
 

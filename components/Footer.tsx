@@ -1,41 +1,67 @@
 import { FunctionComponent } from "react";
-import CodeLink from "./header/CodeLink";
+import {
+  Space,
+  Footer as MFooter,
+  Container,
+  Stack,
+  Text,
+} from "@mantine/core";
+import InlineLink from "./InlineLink";
 
 interface Props {
-  responsive?: boolean;
+  center?: boolean;
 }
 
-const Footer: FunctionComponent<Props> = ({ responsive = false }) => {
-  const autoText = responsive ? "md:text-center" : "";
-  const autoJustify = responsive ? "md:justify-center" : "";
+const Footer: FunctionComponent<Props> = ({ center }) => {
+  const height = "8rem";
 
   return (
-    <footer className="border-t p-4 mt-4">
-      <div
-        className={`container max-w-5xl mx-auto flex flex-col gap-4 pt-4 ${autoText}`}
+    <>
+      <Space sx={{ height }}></Space>
+      <MFooter
+        height={height}
+        sx={(theme) => ({
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1,
+          backgroundColor:
+            theme.colorScheme == "dark"
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+        })}
+        withBorder={false}
+        className="ml-0 sm:ml-[200px] lg:ml-[260px]"
       >
-        <div className={`flex items-center text-md ${autoJustify}`}>
-          <CodeLink />
-        </div>
-        <div className="text-raisin-black text-lg">
-          Contributing to pronomia | Releases | Guide | Issue Tracker
-        </div>
-        <p className="text-gray-700">
-          Pronomia is developed under the{" "}
-          <a href="https://github.com/nacht-org" className="inline-link">
-            Pronomia Organization
-          </a>{" "}
-          and licensed under the{" "}
-          <a
-            href="https://github.com/nacht-org/nacht/blob/main/LICENSE"
-            className="inline-link"
+        <Container className="h-full">
+          <Stack
+            align="center"
+            justify="center"
+            spacing="xs"
+            className="h-full"
           >
-            Apache 2 license
-          </a>
-          .
-        </p>
-      </div>
-    </footer>
+            <Text align="center" color="dimmed">
+              Contribute | Issues | Discussions | Releases
+            </Text>
+            <Text align="center" size="sm" color="dimmed">
+              Built by{" "}
+              <InlineLink href="https://github.com/mensch272" blank>
+                Mohamed Haisham
+              </InlineLink>{" "}
+              using{" "}
+              <InlineLink href="https://mantine.dev/" blank>
+                Mantine
+              </InlineLink>{" "}
+              and{" "}
+              <InlineLink href="https://tailwindcss.com/" blank>
+                Tailwind
+              </InlineLink>
+            </Text>
+          </Stack>
+        </Container>
+      </MFooter>
+    </>
   );
 };
 
