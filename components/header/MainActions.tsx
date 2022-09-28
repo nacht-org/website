@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import CodeLink from "./CodeLink";
 import HeaderLink from "./HeaderLink";
 import { Group, Divider } from "@mantine/core";
+import ColorSchemeToggle from "./ColorSchemeToggle";
 
 const MainActions: FunctionComponent = () => {
   return (
@@ -10,6 +11,7 @@ const MainActions: FunctionComponent = () => {
       <HeaderLink href="#null">Privacy Policy</HeaderLink>
       <Divider orientation="vertical" my="xs" className="hidden md:block" />
       <CodeLink />
+      <ColorSchemeToggle />
     </Group>
   );
 };
