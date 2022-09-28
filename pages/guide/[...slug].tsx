@@ -110,7 +110,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <Paper p="xl" shadow="md" sx={{ position: "relative", zIndex: 2 }}>
           <GuideContent guide={guide} content={markdown} />
         </Paper>
-        <Footer />
+        <Footer indent />
       </AppShell>
     </>
   );

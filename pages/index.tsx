@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { AppShell, Stack, Title, Text, Paper } from "@mantine/core";
+import { AppShell, Stack, Title, Text, Paper, Button } from "@mantine/core";
 import HeaderActions from "../components/header/HeaderActions";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 import Showcase from "../components/Showcase";
+import HeaderTitle from "../components/header/HeaderTitle";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -17,16 +19,17 @@ const Home: NextPage = () => {
             customizable"
         />
       </Head>
-      <Paper shadow="md">
+      <Paper shadow="md" sx={{ position: "relative", zIndex: 2 }}>
         <AppShell
           padding="md"
           header={
             <Header>
+              <HeaderTitle />
               <HeaderActions />
             </Header>
           }
         >
-          <Stack align="center" className="mt-64 mb-8">
+          <Stack align="center" className="mt-36 mb-8">
             <Title order={1} weight="normal" className="font-display text-7xl">
               Pronomia
             </Title>
@@ -34,9 +37,13 @@ const Home: NextPage = () => {
               className="max-w-5xl text-2xl md:text-3xl"
               align="center"
               span
+              mb="lg"
             >
               Free and open source novel reader
             </Text>
+            <Link href="/guide/getting-started" passHref>
+              <Button size="xl">Getting started</Button>
+            </Link>
             <Showcase />
           </Stack>
         </AppShell>
