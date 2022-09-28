@@ -4,7 +4,7 @@ import { AppShell, Stack, Title, Text, Paper, Button } from "@mantine/core";
 import HeaderActions from "../components/header/HeaderActions";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
-import Showcase from "../components/Showcase";
+import Showcase from "../components/Showcase/Showcase";
 import HeaderTitle from "../components/header/HeaderTitle";
 import Link from "next/link";
 
