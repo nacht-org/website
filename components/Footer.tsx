@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import {
   Space,
-  Footer as MDFooter,
+  Footer as MFooter,
   Container,
   Stack,
   Text,
@@ -18,9 +18,21 @@ const Footer: FunctionComponent<Props> = ({ center }) => {
   return (
     <>
       <Space sx={{ height }}></Space>
-      <MDFooter
+      <MFooter
         height={height}
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: -1 }}
+        sx={(theme) => ({
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: -1,
+          backgroundColor:
+            theme.colorScheme == "dark"
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+        })}
+        withBorder={false}
+        className="ml-0 sm:ml-[200px] lg:ml-[300px]"
       >
         <Container className="h-full">
           <Stack
@@ -48,7 +60,7 @@ const Footer: FunctionComponent<Props> = ({ center }) => {
             </Text>
           </Stack>
         </Container>
-      </MDFooter>
+      </MFooter>
     </>
   );
 };

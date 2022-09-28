@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 
 import { ParsedUrlQuery } from "querystring";
-import ReactMarkdown from "react-markdown";
 
 import {
   guideSlugs,
@@ -13,12 +12,22 @@ import {
   guideHeadings,
 } from "../../lib/guide";
 import { mdBody } from "../../lib/markdown";
-import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
 import Header from "../../components/header/Header";
 import GuideContent from "../../components/guide/GuideContent";
-import { AppShell } from "@mantine/core";
+import {
+  AppShell,
+  Container,
+  Navbar,
+  NavLink,
+  Paper,
+  Stack,
+  Text,
+} from "@mantine/core";
 import MainActions from "../../components/header/MainActions";
+import Link from "next/link";
+import { routePath } from "../../lib/route";
+import Footer from "../../components/Footer";
 
 interface Props {
   guide: GuideData;
@@ -40,15 +49,52 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <meta name="description" content={guide.description} />
       </Head>
       <AppShell
+        padding={0}
         header={
           <Header>
             <MainActions />
           </Header>
         }
+        navbar={
+          <Navbar
+            p="md"
+            hiddenBreakpoint="sm"
+            width={{ sm: 200, lg: 300 }}
+            sx={(theme) => ({
+              backgroundColor:
+                theme.colorScheme == "dark"
+                  ? theme.colors.dark[8]
+                  : theme.white,
+              borderColor:
+                theme.colorScheme == "dark"
+                  ? theme.colors.dark[7]
+                  : theme.colors.gray[2],
+            })}
+            hidden
+          >
+            <Stack spacing="xs">
+              {headings.map((guide) => {
+                const href = `/guide${routePath(...guide.route.slugs)}`;
+
+                return (
+                  <Link href={href} passHref>
+                    <NavLink
+                      key={guide.path}
+                      label={guide.front.title}
+                      active={router.asPath.startsWith(href)}
+                      component="a"
+                    />
+                  </Link>
+                );
+              })}
+            </Stack>
+          </Navbar>
+        }
       >
-        <div>
+        <Paper p="xl" shadow="md">
           <GuideContent guide={guide} content={markdown} />
-        </div>
+        </Paper>
+        <Footer />
       </AppShell>
     </>
   );
