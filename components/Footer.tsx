@@ -32,7 +32,7 @@ const Footer: FunctionComponent<Props> = ({ center }) => {
               : theme.colors.gray[0],
         })}
         withBorder={false}
-        className="ml-0 sm:ml-[200px] lg:ml-[300px]"
+        className="ml-0 sm:ml-[200px] lg:ml-[260px]"
       >
         <Container className="h-full">
           <Stack

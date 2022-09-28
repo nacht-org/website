@@ -59,7 +59,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
           <Navbar
             p="md"
             hiddenBreakpoint="sm"
-            width={{ sm: 200, lg: 300 }}
+            width={{ sm: 200, lg: 260 }}
             sx={(theme) => ({
               backgroundColor:
                 theme.colorScheme == "dark"
