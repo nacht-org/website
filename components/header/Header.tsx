@@ -7,7 +7,7 @@ export interface HeaderProps {
 
 const Header: FunctionComponent<HeaderProps> = ({ children }) => {
   return (
-    <Paper height="4rem" p="md" component={MantineHeader}>
+    <Paper height={60} p="md" component={MantineHeader}>
       <div className="flex items-center justify-between h-full">
         <Title order={1} className="font-display text-2xl" weight="normal">
           Pronomia

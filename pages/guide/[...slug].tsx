@@ -13,14 +13,12 @@ import {
   guideHeadings,
 } from "../../lib/guide";
 import { mdBody } from "../../lib/markdown";
-import { EditFilled } from "@ant-design/icons";
-import { editPath } from "../../lib/website";
 import Footer from "../../components/Footer";
-import { routePath } from "../../lib/route";
 import { useRouter } from "next/router";
 import Header from "../../components/header/Header";
-import GuideSideBar from "../../components/guide/GuideSideBar";
 import GuideContent from "../../components/guide/GuideContent";
+import { AppShell } from "@mantine/core";
+import MainActions from "../../components/header/MainActions";
 
 interface Props {
   guide: GuideData;
@@ -41,17 +39,17 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
         <title>Guide | {guide.title}</title>
         <meta name="description" content={guide.description} />
       </Head>
-      <GuideSideBar guides={headings} />
-      <div className="flex">
-        <div className="w-full overflow-y-auto ml-0 lg:ml-72 xl:ml-0">
-          <div className="container max-w-3xl w-full xl:mx-auto">
-            <GuideContent guide={guide} content={markdown} />
-            <div className="lg:m-4">
-              <Footer />
-            </div>
-          </div>
+      <AppShell
+        header={
+          <Header>
+            <MainActions />
+          </Header>
+        }
+      >
+        <div>
+          <GuideContent guide={guide} content={markdown} />
         </div>
-      </div>
+      </AppShell>
     </>
   );
 };
