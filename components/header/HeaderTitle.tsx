@@ -1,11 +1,16 @@
-import { Title } from "@mantine/core";
+import { Title, UnstyledButton } from "@mantine/core";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 
 const HeaderTitle: FunctionComponent = () => {
   return (
-    <Title order={1} className="font-display text-2xl" weight="normal">
-      Pronomia
-    </Title>
+    <Link href="/" passHref>
+      <UnstyledButton component="a">
+        <Title order={1} className="font-display text-2xl" weight="normal">
+          Pronomia
+        </Title>
+      </UnstyledButton>
+    </Link>
   );
 };
 
