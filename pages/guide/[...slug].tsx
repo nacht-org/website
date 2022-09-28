@@ -8,8 +8,8 @@ import {
   GuideData,
   slugsToPath,
   guideData,
-  GuideHeading,
-  guideHeadings,
+  guideGroups,
+  GuideGroup,
 } from "../../lib/guide";
 import { mdBody } from "../../lib/markdown";
 import { useRouter } from "next/router";
@@ -24,6 +24,9 @@ import {
   NavLink,
   Paper,
   Stack,
+  Box,
+  Text,
+  Space,
 } from "@mantine/core";
 import HeaderActions from "../../components/header/HeaderActions";
 import Link from "next/link";
@@ -31,20 +34,22 @@ import { routePath } from "../../lib/route";
 import Footer from "../../components/Footer";
 import { useState } from "react";
 import HeaderTitle from "../../components/header/HeaderTitle";
+import NavItem from "../../components/Navigation/NavItem";
+import NavGroup from "../../components/Navigation/NavGroup";
+import NavSpace from "../../components/Navigation/NavSpace";
 
 interface Props {
   guide: GuideData;
   markdown: string;
-  headings: GuideHeading[];
+  groups: GuideGroup[];
 }
 
 interface Params extends ParsedUrlQuery {
   slug: string[];
 }
 
-const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
+const Guide: NextPage<Props> = ({ guide, markdown, groups }) => {
   const [opened, setOpened] = useState(false);
-  const router = useRouter();
 
   return (
     <>
@@ -89,18 +94,19 @@ const Guide: NextPage<Props> = ({ guide, markdown, headings }) => {
             hidden={!opened}
           >
             <Stack spacing="xs">
-              {headings.map((guide) => {
-                const href = `/guide${routePath(...guide.route.slugs)}`;
-
+              {groups.map((group) => {
                 return (
-                  <Link href={href} passHref key={guide.path}>
-                    <NavLink
-                      label={guide.front.title}
-                      active={router.asPath.startsWith(href)}
-                      component="a"
-                      onClick={() => setOpened(false)}
-                    />
-                  </Link>
+                  <NavGroup title={group.title}>
+                    {group.headings.map((guide) => (
+                      <>
+                        <NavSpace />
+                        <NavItem
+                          guide={guide}
+                          onClick={() => setOpened(false)}
+                        />
+                      </>
+                    ))}
+                  </NavGroup>
                 );
               })}
             </Stack>
@@ -123,7 +129,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
     props: {
       guide: guideData(path),
       markdown: mdBody(path),
-      headings: guideHeadings(),
+      groups: guideGroups(),
     },
   };
 };
@@ -134,19 +140,3 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 
 export default Guide;
-
-{
-  /* <div className="hidden md:flex flex-col gap-2 container max-w-[14rem]">
-            <h3 className="text-lg font-bold px-4 mb-2 flex items-center gap-2">
-              <ReadFilled className="flex" />
-              Guides
-            </h3>
-            {headings.map((guideHeading) => (
-              <GuideNav
-                key={guideHeading.route.slugs.join("/")}
-                guide={guideHeading}
-                expanded={guide.key === guideHeading.front.key}
-              />
-            ))}
-          </div> */
-}

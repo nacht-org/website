@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         theme={{
           colorScheme,
           fontFamily: "Noto Sans, sans-serif",
+          defaultRadius: "sm",
         }}
         withGlobalStyles
         withNormalizeCSS

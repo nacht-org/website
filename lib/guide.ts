@@ -4,10 +4,10 @@ import { RouteData } from "./route";
 /**
  * Paths to all the guides
  */
-const paths = [
-  "markdown/guide/getting-started.md",
-  "markdown/guide/contributing.md",
-];
+const paths = {
+  Basic: ["markdown/guide/getting-started.md"],
+  About: ["markdown/guide/contributing.md"],
+};
 
 /**
  * The frontmatter data from a guide markdown file.
@@ -49,7 +49,7 @@ export function slugsToPath(slugs: string[]): string {
  * @returns All the guides as route slugs
  */
 export function guideSlugs(): string[][] {
-  return paths.map(pathToSlugs);
+  return Object.values(paths).flat().map(pathToSlugs);
 }
 
 /**
@@ -61,6 +61,11 @@ export function guideSlugs(): string[][] {
 export function guideData(path: string): GuideData {
   const data = parseMeta<GuideFront, GuideFront & FileMeta>(path);
   return { ...data, slugs: pathToSlugs(data.path) };
+}
+
+export interface GuideGroup {
+  title: string;
+  headings: GuideHeading[];
 }
 
 /**
@@ -75,10 +80,13 @@ export interface GuideHeading {
 /**
  * @returns All the guide headings with frontmatter data
  */
-export function guideHeadings(): GuideHeading[] {
-  return paths.map((path) => ({
-    path,
-    front: parseFront<GuideFront>(path),
-    route: { slugs: pathToSlugs(path) },
+export function guideGroups(): GuideGroup[] {
+  return Object.entries(paths).map(([title, paths]) => ({
+    title,
+    headings: paths.map((path) => ({
+      path,
+      front: parseFront<GuideFront>(path),
+      route: { slugs: pathToSlugs(path) },
+    })),
   }));
 }
