@@ -1,13 +1,14 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef } from "react";
 import { StaticImageData } from "next/image";
 import { Carousel } from "@mantine/carousel";
 import { Group } from "@mantine/core";
+import { Parallax } from "react-scroll-parallax";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 
 import browseImage from "../public/images/showcase-browse.jpg";
 import novelImage from "../public/images/showcase-novel.jpg";
 import readerImage from "../public/images/showcase-reader.jpg";
-import { Parallax } from "react-scroll-parallax";
 
 const cards = [
   {
@@ -37,6 +38,8 @@ const buildCard = (src: StaticImageData, alt: string) => (
 );
 
 const Showcase: FunctionComponent = () => {
+  const autoplay = useRef(Autoplay({ delay: 3000 }));
+
   return (
     <div className="mt-24">
       <Group
@@ -53,7 +56,16 @@ const Showcase: FunctionComponent = () => {
           </Parallax>
         ))}
       </Group>
-      <Carousel slideGap="xs" loop className="block sm:hidden">
+      <Carousel
+        slideGap="xs"
+        loop
+        className="block sm:hidden"
+        withIndicators
+        withControls={false}
+        plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={autoplay.current.reset}
+      >
         {cards.map(({ key, alt, src, speed }) => (
           <Carousel.Slide key={key}>
             <div className="flex items-center w-full">
