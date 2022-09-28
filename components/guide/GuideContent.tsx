@@ -19,7 +19,10 @@ interface Props {
 const GuideContent: FunctionComponent<Props> = ({ guide, content }) => {
   return (
     <main>
-      <Title order={1} className="mb-1">
+      <Title
+        order={1}
+        sx={{ fontSize: "3rem", marginBottom: "0.25rem", fontWeight: 1000 }}
+      >
         {guide.title}
       </Title>
       <Group align="center" spacing="lg" mb="xl">
@@ -37,24 +40,12 @@ const GuideContent: FunctionComponent<Props> = ({ guide, content }) => {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeAutolinkHeadings]}
         components={{
-          h1: ({ node, level, ...props }) => (
-            <Title order={level as TitleOrder} {...props} />
-          ),
-          h2: ({ node, level, ...props }) => (
-            <Title order={level as TitleOrder} {...props} />
-          ),
-          h3: ({ node, level, ...props }) => (
-            <Title order={level as TitleOrder} {...props} />
-          ),
-          h4: ({ node, level, ...props }) => (
-            <Title order={level as TitleOrder} {...props} />
-          ),
-          h5: ({ node, level, ...props }) => (
-            <Title order={level as TitleOrder} {...props} />
-          ),
-          h6: ({ node, level, ...props }) => (
-            <Title order={level as TitleOrder} {...props} />
-          ),
+          h1: ({ node, ...props }) => <Title order={1} {...props} />,
+          h2: ({ node, ...props }) => <Title order={2} {...props} />,
+          h3: ({ node, ...props }) => <Title order={3} {...props} />,
+          h4: ({ node, ...props }) => <Title order={4} {...props} />,
+          h5: ({ node, ...props }) => <Title order={5} {...props} />,
+          h6: ({ node, ...props }) => <Title order={6} {...props} />,
         }}
       ></ReactMarkdown>
     </main>
