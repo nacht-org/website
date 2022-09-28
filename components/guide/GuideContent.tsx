@@ -1,7 +1,5 @@
 import { FunctionComponent } from "react";
 
-import { FaEdit } from "react-icons/fa";
-import TimeAgo from "react-timeago";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -19,22 +17,6 @@ interface Props {
 const GuideContent: FunctionComponent<Props> = ({ guide, content }) => {
   return (
     <main>
-      <Title
-        order={1}
-        sx={{ fontSize: "3rem", marginBottom: "0.25rem", fontWeight: 1000 }}
-      >
-        {guide.title}
-      </Title>
-      <Group align="center" spacing="lg" mb="xl">
-        <InlineLink href={editPath(guide.path)}>
-          <Text color="dimmed" size="sm">
-            <FaEdit className="inline" /> Edit page
-          </Text>
-        </InlineLink>
-        <Text color="dimmed" size="sm">
-          Last updated: <TimeAgo date={guide.dateModified} className="ml-1" />
-        </Text>
-      </Group>
       <ReactMarkdown
         children={content}
         remarkPlugins={[remarkGfm]}

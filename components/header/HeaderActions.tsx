@@ -7,8 +7,7 @@ import ColorSchemeToggle from "./ColorSchemeToggle";
 const HeaderActions: FunctionComponent = () => {
   return (
     <Group spacing="md" align="center">
-      <HeaderLink href="/guide/getting-started">Getting Started</HeaderLink>
-      <HeaderLink href="#null">Privacy Policy</HeaderLink>
+      <HeaderLink label="Guides" href="/guide/getting-started" />
       <Divider orientation="vertical" my="xs" className="hidden md:block" />
       <CodeLink />
       <ColorSchemeToggle />

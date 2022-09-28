@@ -1,28 +1,22 @@
 import Link from "next/link";
 import { FunctionComponent, ReactNode } from "react";
-import { Text, MantineTheme } from "@mantine/core";
+import { Text, MantineTheme, NavLink } from "@mantine/core";
 
 interface Props {
+  label: string;
   href: string;
-  children?: ReactNode;
 }
 
-const HeaderLink: FunctionComponent<Props> = ({ href, children }) => {
+const HeaderLink: FunctionComponent<Props> = ({ label, href }) => {
   return (
     <Link href={href} passHref>
-      <Text
+      <NavLink
         component="a"
-        size="md"
-        sx={(theme) => ({
-          verticalAlign: "middle",
-          "&:hover": {
-            color: theme.primaryColor,
-          },
-        })}
-        className="hidden md:block"
-      >
-        {children}
-      </Text>
+        label={label}
+        sx={{ width: "auto" }}
+        styles={(theme) => ({ label: { fontSize: theme.spacing.md } })}
+        className="hidden md:flex"
+      />
     </Link>
   );
 };
