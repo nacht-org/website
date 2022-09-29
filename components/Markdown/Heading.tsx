@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import Slugger from "github-slugger";
 import { Title, TitleOrder, Box } from "@mantine/core";
 import Link from "next/link";
+import { HEADER_HEIGHT } from "../Layout/Header";
 
 function flatten(text: string, child: any): any {
   return typeof child === "string"
@@ -23,7 +24,14 @@ const Heading: FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <Title id={slug} order={props.level}>
+      <Box
+        id={slug}
+        sx={(theme) => ({
+          position: "relative",
+          top: -(theme.spacing.md + HEADER_HEIGHT),
+        })}
+      />
+      <Title order={props.level}>
         <Link href={`#${slug}`} passHref>
           <Box component="a" sx={{ textDecoration: "none", color: "inherit" }}>
             {props.children}
