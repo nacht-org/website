@@ -7,6 +7,7 @@ import {
 } from "@mantine/core";
 import "../styles/globals.scss";
 import { useColorScheme, useHotkeys, useLocalStorage } from "@mantine/hooks";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const preferredColorScheme = useColorScheme();
@@ -21,24 +22,33 @@ function MyApp({ Component, pageProps }: AppProps) {
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
-    >
-      <MantineProvider
-        theme={{
-          colorScheme,
-          fontFamily: "Noto Sans, sans-serif",
-          defaultRadius: "sm",
-        }}
-        withGlobalStyles
-        withNormalizeCSS
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+      </Head>
+
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        <ParallaxProvider>
-          <Component {...pageProps} />
-        </ParallaxProvider>
-      </MantineProvider>
-    </ColorSchemeProvider>
+        <MantineProvider
+          theme={{
+            colorScheme,
+            fontFamily: "Noto Sans, sans-serif",
+            defaultRadius: "sm",
+          }}
+          withGlobalStyles
+          withNormalizeCSS
+        >
+          <ParallaxProvider>
+            <Component {...pageProps} />
+          </ParallaxProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </>
   );
 }
 
