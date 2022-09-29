@@ -1,14 +1,15 @@
 import { createStyles } from "@mantine/core";
+import { breakpoint } from "../styles";
 
 export default createStyles((theme) => ({
   indent: {
     padding: theme.spacing.lg,
 
-    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+    [breakpoint(theme.breakpoints.md)]: {
       padding: theme.spacing.xl,
     },
 
-    [`@media (min-width: ${theme.breakpoints.lg}px)`]: {
+    [breakpoint(theme.breakpoints.lg)]: {
       padding: theme.spacing.xl * 2,
     },
   },
