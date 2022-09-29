@@ -16,7 +16,7 @@ const GuideLink: FunctionComponent<Props> = ({ heading, href, route }) => {
         className="px-4 py-2 hover:bg-raisin-black w-full hover:text-floral-white"
         depth={heading.depth}
       >
-        {heading.text}
+        {heading.title}
       </IndentedLink>
     </li>
   );

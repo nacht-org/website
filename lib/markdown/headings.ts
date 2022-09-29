@@ -1,17 +1,12 @@
-import slugify from "slugify";
-
-/**
- * This determines the type of heading where 1 is '#'
- * and 6 is '######'.
- */
-export type HeadingDepth = 1 | 2 | 3 | 4 | 5 | 6;
+import Slugger from "github-slugger";
+import { TitleOrder } from "@mantine/core";
 
 /**
  * This interface encapsulates data from a single heading in markdown.
  */
 export interface HeadingData {
-  text: string;
-  depth: HeadingDepth;
+  title: string;
+  depth: TitleOrder;
   slug: string;
 }
 
@@ -25,13 +20,14 @@ const pattern = /#{1,6}.+(?=\n)/g;
  * @param markdown The markdown source string
  * @returns A list of headings in order
  */
-export function markdownHeadings(markdown: string): HeadingData[] {
+export function parseHeadings(markdown: string): HeadingData[] {
   const matches = markdown.match(pattern);
   if (matches == null) {
     return [];
   }
 
-  return matches.map(parseMatch);
+  const slugger = new Slugger();
+  return matches.map((match) => parseMatch(match, slugger));
 }
 
 /**
@@ -40,13 +36,13 @@ export function markdownHeadings(markdown: string): HeadingData[] {
  * @param match A markdown heading line
  * @returns Extracted heading data
  */
-function parseMatch(match: string): HeadingData {
+function parseMatch(match: string, slugger: Slugger): HeadingData {
   const [declaration, ...rest] = match.split(" ");
   const text = rest.join(" ");
 
   return {
-    text,
-    depth: declaration.length as HeadingDepth,
-    slug: slugify(text),
+    title: text,
+    depth: declaration.length as TitleOrder,
+    slug: slugger.slug(text),
   };
 }

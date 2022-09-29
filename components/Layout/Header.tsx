@@ -1,6 +1,8 @@
 import { FunctionComponent, ReactNode } from "react";
 import { Header as MHeader, Paper, useMantineTheme } from "@mantine/core";
 
+export const HEADER_HEIGHT = 60;
+
 export interface HeaderProps {
   children?: ReactNode;
 }
@@ -11,7 +13,7 @@ const Header: FunctionComponent<HeaderProps> = ({ children }) => {
 
   return (
     <Paper
-      height={60}
+      height={HEADER_HEIGHT}
       p="md"
       component={MHeader}
       shadow={shadow}

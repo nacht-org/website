@@ -11,9 +11,9 @@ import {
   guideGroups,
   GuideGroup,
 } from "../../lib/guide";
-import { mdBody } from "../../lib/markdown";
+import { HeadingData, mdBody, parseHeadings } from "../../lib/markdown";
 import { useRouter } from "next/router";
-import Header from "../../components/header/Header";
+import Header, { HEADER_HEIGHT } from "../../components/Layout/Header";
 import GuideContent from "../../components/guide/GuideContent";
 import {
   AppShell,
@@ -40,7 +40,7 @@ import NavItem from "../../components/Navigation/NavItem";
 import NavGroup from "../../components/Navigation/NavGroup";
 import NavSpace from "../../components/Navigation/NavSpace";
 import Labeled from "../../components/Labeled";
-import { TbEdit, TbClock } from "react-icons/tb";
+import { TbEdit, TbClock, TbList } from "react-icons/tb";
 import TimeAgo from "react-timeago";
 import InlineLink from "../../components/InlineLink";
 import { editPath } from "../../lib/website";
@@ -50,13 +50,14 @@ interface Props {
   guide: GuideData;
   markdown: string;
   groups: GuideGroup[];
+  contents: HeadingData[];
 }
 
 interface Params extends ParsedUrlQuery {
   slug: string[];
 }
 
-const Guide: NextPage<Props> = ({ guide, markdown, groups }) => {
+const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
   const [opened, setOpened] = useState(false);
 
   return (
@@ -165,7 +166,58 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups }) => {
             </Indent>
           </Box>
           <Indent>
-            <GuideContent guide={guide} content={markdown} />
+            <Group
+              align="stretch"
+              sx={{ gap: "2rem", position: "relative" }}
+              noWrap
+            >
+              <GuideContent guide={guide} content={markdown} />
+              <div>
+                <Box
+                  sx={(theme) => ({
+                    position: "sticky",
+                    top: HEADER_HEIGHT + theme.spacing.xl * 2,
+                    width: "12rem",
+                  })}
+                >
+                  <Stack spacing={0}>
+                    <Group mb="md">
+                      <TbList />
+                      <Text size="sm" span>
+                        Table of contents
+                      </Text>
+                    </Group>
+                    {contents
+                      .filter((content) => content.depth > 1)
+                      .map((content) => {
+                        const active = false;
+
+                        return (
+                          <Link href={`#${content.slug}`} passHref>
+                            <NavLink
+                              label={content.title}
+                              sx={(theme) => ({
+                                borderLeftColor: active
+                                  ? theme.primaryColor
+                                  : theme.colorScheme == "dark"
+                                  ? theme.colors.dark[6]
+                                  : theme.colors.gray[5],
+                                borderLeftWidth: "1px",
+                                borderLeftStyle: "solid",
+                              })}
+                              styles={{
+                                label: {
+                                  padding: (content.depth - 2) * 8,
+                                },
+                              }}
+                            ></NavLink>
+                          </Link>
+                        );
+                      })}
+                  </Stack>
+                </Box>
+              </div>
+            </Group>
           </Indent>
         </Paper>
         <Footer indent />
@@ -176,12 +228,14 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups }) => {
 
 export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
   const path = slugsToPath(params!.slug);
+  const markdown = mdBody(path);
 
   return {
     props: {
       guide: guideData(path),
-      markdown: mdBody(path),
+      markdown,
       groups: guideGroups(),
+      contents: parseHeadings(markdown),
     },
   };
 };
