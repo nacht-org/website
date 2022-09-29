@@ -5,8 +5,8 @@ import { RouteData } from "./route";
  * Paths to all the guides
  */
 const paths = {
-  Basic: ["markdown/guide/getting-started.md"],
-  About: ["markdown/guide/contributing.md"],
+  Basic: ["markdown/basic/getting-started.md"],
+  About: ["markdown/about/contribute.md", "markdown/about/license.md"],
 };
 
 /**
@@ -31,7 +31,7 @@ export type GuideData = GuideFront & FileMeta & RouteData;
  */
 function pathToSlugs(path: string): string[] {
   return path
-    .substring("markdown/guide/".length, path.length - ".md".length)
+    .substring("markdown/".length, path.length - ".md".length)
     .split("/");
 }
 
@@ -42,7 +42,7 @@ function pathToSlugs(path: string): string[] {
  * @returns The path of the guide file
  */
 export function slugsToPath(slugs: string[]): string {
-  return `markdown/guide/${slugs.join("/")}.md`;
+  return `markdown/${slugs.join("/")}.md`;
 }
 
 /**

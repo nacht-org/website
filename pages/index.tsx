@@ -41,7 +41,7 @@ const Home: NextPage = () => {
             >
               Free and open source novel reader
             </Text>
-            <Link href="/guide/getting-started" passHref>
+            <Link href="/basic/getting-started" passHref>
               <Button size="xl">Getting started</Button>
             </Link>
             <Showcase />

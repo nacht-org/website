@@ -10,11 +10,11 @@ import {
   guideData,
   guideGroups,
   GuideGroup,
-} from "../../lib/guide";
-import { HeadingData, mdBody, parseHeadings } from "../../lib/markdown";
+} from "../lib/guide";
+import { HeadingData, mdBody, parseHeadings } from "../lib/markdown";
 import { useRouter } from "next/router";
-import Header, { HEADER_HEIGHT } from "../../components/Layout/Header";
-import GuideContent from "../../components/guide/GuideContent";
+import Header, { HEADER_HEIGHT } from "../components/Layout/Header";
+import GuideContent from "../components/guide/GuideContent";
 import {
   AppShell,
   Burger,
@@ -30,21 +30,26 @@ import {
   Title,
   Container,
 } from "@mantine/core";
-import HeaderActions from "../../components/header/HeaderActions";
+import HeaderActions from "../components/header/HeaderActions";
 import Link from "next/link";
-import { routePath } from "../../lib/route";
-import Footer from "../../components/Footer";
+import { routePath } from "../lib/route";
+import Footer from "../components/Footer";
 import { useState } from "react";
-import HeaderTitle from "../../components/header/HeaderTitle";
-import NavItem from "../../components/Navigation/NavItem";
-import NavGroup from "../../components/Navigation/NavGroup";
-import NavSpace from "../../components/Navigation/NavSpace";
-import Labeled from "../../components/Labeled";
+import HeaderTitle from "../components/header/HeaderTitle";
+import NavItem from "../components/Navigation/NavItem";
+import NavGroup from "../components/Navigation/NavGroup";
+import NavSpace from "../components/Navigation/NavSpace";
+import Labeled from "../components/Labeled";
 import { TbEdit, TbClock, TbList } from "react-icons/tb";
 import TimeAgo from "react-timeago";
-import InlineLink from "../../components/InlineLink";
-import { editPath } from "../../lib/website";
-import Indent from "../../components/Indent/Indent";
+import InlineLink from "../components/InlineLink";
+import { editPath } from "../lib/website";
+import Indent from "../components/Indent/Indent";
+import {
+  breakpoint,
+  CONTENT_WIDTH,
+  TABLE_OF_CONTENTS_WIDTH,
+} from "../components/styles";
 
 interface Props {
   guide: GuideData;
@@ -63,7 +68,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
   return (
     <>
       <Head>
-        <title>Guide | {guide.title}</title>
+        <title>{guide.title} | Promonia</title>
         <meta name="description" content={guide.description} />
       </Head>
       <AppShell
@@ -171,7 +176,20 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
               sx={{ gap: "2rem", position: "relative" }}
               noWrap
             >
-              <GuideContent guide={guide} content={markdown} />
+              <Box
+                sx={(theme) => ({
+                  width: "100%",
+                  maxWidth: CONTENT_WIDTH,
+                  marginLeft: "auto",
+                  marginRight: "auto",
+
+                  [breakpoint(theme.breakpoints.md)]: {
+                    width: `calc(100% - ${TABLE_OF_CONTENTS_WIDTH})`,
+                  },
+                })}
+              >
+                <GuideContent guide={guide} content={markdown} />
+              </Box>
               <div className="hidden md:block">
                 <Box
                   sx={(theme) => ({

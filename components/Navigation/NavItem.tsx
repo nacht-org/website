@@ -12,7 +12,7 @@ interface Props {
 
 const NavItem: FunctionComponent<Props> = ({ guide, onClick }) => {
   const router = useRouter();
-  const href = `/guide${routePath(...guide.route.slugs)}`;
+  const href = routePath(...guide.route.slugs);
   const active = router.asPath.startsWith(href);
 
   return (
