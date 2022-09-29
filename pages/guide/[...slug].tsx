@@ -172,12 +172,12 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
               noWrap
             >
               <GuideContent guide={guide} content={markdown} />
-              <div>
+              <div className="hidden md:block">
                 <Box
                   sx={(theme) => ({
                     position: "sticky",
                     top: HEADER_HEIGHT + theme.spacing.xl * 2,
-                    width: "12rem",
+                    width: "15rem",
                   })}
                 >
                   <Stack spacing={0}>
