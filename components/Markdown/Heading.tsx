@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import { FunctionComponent } from "react";
 import Slugger from "github-slugger";
-import { Title, TitleOrder } from "@mantine/core";
-import { ReactMarkdownNames } from "react-markdown/lib/ast-to-react";
+import { Title, TitleOrder, Box } from "@mantine/core";
+import Link from "next/link";
 
 function flatten(text: string, child: any): any {
   return typeof child === "string"
@@ -22,9 +22,15 @@ const Heading: FunctionComponent<Props> = (props) => {
   const slug = props.slugger.slug(text);
 
   return (
-    <Title id={slug} order={props.level}>
-      {props.children}
-    </Title>
+    <>
+      <Title id={slug} order={props.level}>
+        <Link href={`#${slug}`} passHref>
+          <Box component="a" sx={{ textDecoration: "none", color: "inherit" }}>
+            {props.children}
+          </Box>
+        </Link>
+      </Title>
+    </>
   );
 };
 
