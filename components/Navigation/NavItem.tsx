@@ -2,11 +2,11 @@ import { NavLink } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
-import { GuideHeading } from "../../lib/guide";
+import { GuideMinimal } from "../../lib/guide";
 import { routePath } from "../../lib/route";
 
 interface Props {
-  guide: GuideHeading;
+  guide: GuideMinimal;
   onClick?: () => void;
 }
 

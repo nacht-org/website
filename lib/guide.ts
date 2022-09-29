@@ -65,13 +65,13 @@ export function guideData(path: string): GuideData {
 
 export interface GuideGroup {
   title: string;
-  headings: GuideHeading[];
+  guides: GuideMinimal[];
 }
 
 /**
  * Heading data of a guide markdown file.
  */
-export interface GuideHeading {
+export interface GuideMinimal {
   front: GuideFront;
   path: string;
   route: RouteData;
@@ -83,7 +83,7 @@ export interface GuideHeading {
 export function guideGroups(): GuideGroup[] {
   return Object.entries(paths).map(([title, paths]) => ({
     title,
-    headings: paths.map((path) => ({
+    guides: paths.map((path) => ({
       path,
       front: parseFront<GuideFront>(path),
       route: { slugs: pathToSlugs(path) },

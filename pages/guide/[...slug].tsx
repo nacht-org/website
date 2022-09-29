@@ -105,7 +105,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups }) => {
               {groups.map((group) => {
                 return (
                   <NavGroup title={group.title}>
-                    {group.headings.map((guide) => (
+                    {group.guides.map((guide) => (
                       <>
                         <NavSpace />
                         <NavItem
