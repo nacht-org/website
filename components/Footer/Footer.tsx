@@ -6,34 +6,24 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
-import InlineLink from "./InlineLink";
+import InlineLink from "../InlineLink";
+import useStyles from "./Footer.styles";
+import { FOOTER_HEIGHT } from "../styles";
 
-interface Props {
-  indent?: boolean;
-  center?: boolean;
+export interface FooterProps {
+  responsive?: boolean;
 }
 
-const Footer: FunctionComponent<Props> = ({ indent = false, center }) => {
-  const height = "8rem";
+const Footer: FunctionComponent<FooterProps> = ({ responsive }) => {
+  const { classes, cx } = useStyles();
 
   return (
     <>
-      <Space sx={{ height }}></Space>
+      <Space className={classes.space}></Space>
       <MFooter
-        height={height}
-        sx={(theme) => ({
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1,
-          backgroundColor:
-            theme.colorScheme == "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
-        })}
+        height={FOOTER_HEIGHT}
         withBorder={false}
-        className={indent ? "ml-0 sm:ml-[200px] lg:ml-[260px]" : ""}
+        className={cx(classes.footer, { [classes.responsive]: responsive })}
       >
         <Container className="h-full">
           <Stack

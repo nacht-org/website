@@ -3,7 +3,7 @@ import Head from "next/head";
 import { AppShell, Stack, Title, Text, Paper, Button } from "@mantine/core";
 import HeaderActions from "../components/header/HeaderActions";
 import Header from "../components/Layout/Header";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import Showcase from "../components/Showcase/Showcase";
 import HeaderTitle from "../components/header/HeaderTitle";
 import Link from "next/link";
@@ -49,13 +49,6 @@ const Home: NextPage = () => {
         </AppShell>
       </Paper>
       <Footer />
-      {/* <div className="h-full w-full">
-        <div className="mb-32"></div>
-
-
-        <ShowcaseSection />
-      </div>
-      <Footer responsive /> */}
     </>
   );
 };

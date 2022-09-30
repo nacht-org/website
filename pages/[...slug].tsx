@@ -33,7 +33,7 @@ import {
 import HeaderActions from "../components/header/HeaderActions";
 import Link from "next/link";
 import { routePath } from "../lib/route";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import { useState } from "react";
 import HeaderTitle from "../components/header/HeaderTitle";
 import NavItem from "../components/Navigation/NavItem";
@@ -48,6 +48,7 @@ import Indent from "../components/Indent/Indent";
 import {
   breakpoint,
   CONTENT_WIDTH,
+  NAVBAR_WIDTH,
   TABLE_OF_CONTENTS_WIDTH,
 } from "../components/styles";
 
@@ -94,7 +95,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
           <Navbar
             p="md"
             hiddenBreakpoint="sm"
-            width={{ sm: 200, lg: 260 }}
+            width={NAVBAR_WIDTH}
             sx={(theme) => ({
               backgroundColor:
                 theme.colorScheme == "dark"
@@ -238,7 +239,7 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
             </Group>
           </Indent>
         </Paper>
-        <Footer indent />
+        <Footer responsive />
       </AppShell>
     </>
   );
