@@ -1,23 +1,13 @@
 import { FunctionComponent } from "react";
 import { FooterInner, FooterWrapper } from "../../Layout/Footer";
-import Indent from "../Indent/Indent";
-import useStyles from "./Indent.styles";
+import IndentWrapper from "../Indent/IndentWrapper/IndentWrapper";
 
 const IndentFooter: FunctionComponent = () => {
-  const { classes } = useStyles();
-
   return (
     <FooterWrapper>
-      <Indent fill>
-        <div className={classes.group}>
-          <div className={classes.content_wrapper}>
-            <FooterInner preferAligned />
-          </div>
-          <div className={classes.hide}>
-            <div className={classes.table}></div>
-          </div>
-        </div>
-      </Indent>
+      <IndentWrapper fill>
+        <FooterInner preferAligned />
+      </IndentWrapper>
     </FooterWrapper>
   );
 };

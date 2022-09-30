@@ -4,7 +4,7 @@ import {
   CONTENT_WIDTH,
   NAVBAR_WIDTH,
   TABLE_OF_CONTENTS_WIDTH,
-} from "../../styles";
+} from "../../../styles";
 
 export default createStyles((theme) => ({
   group: {
