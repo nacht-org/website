@@ -13,4 +13,7 @@ export default createStyles((theme) => ({
       padding: theme.spacing.xl * 2,
     },
   },
+  fill: {
+    height: "100%",
+  },
 }));

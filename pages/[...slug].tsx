@@ -15,12 +15,12 @@ import { HeadingData, mdBody, parseHeadings } from "../lib/markdown";
 import Header from "../components/Layout/Header/Header";
 import { AppShell, Burger, Group, MediaQuery } from "@mantine/core";
 import HeaderActions from "../components/Layout/Header/HeaderActions/HeaderActions";
-import Footer from "../components/Layout/Footer/Footer";
 import { useState } from "react";
 import HeaderTitle from "../components/Layout/Header/HeaderTitle/HeaderTitle";
 import Navbar from "../components/MdPage/Navbar/Navbar";
 import Beam from "../components/MdPage/Beam/Beam";
 import MainContent from "../components/MdPage/MainContent/MainContent";
+import IndentFooter from "../components/MdPage/IndentFooter/IndentFooter";
 
 interface Props {
   guide: GuideData;
@@ -73,7 +73,7 @@ const MdPage: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
           <Beam info={guide} />
           <MainContent markdown={markdown} contents={contents} />
         </article>
-        <Footer responsive />
+        <IndentFooter />
       </AppShell>
     </>
   );
