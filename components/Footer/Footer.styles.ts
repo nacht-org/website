@@ -22,7 +22,4 @@ export default createStyles((theme) => ({
       marginLeft: NAVBAR_WIDTH.lg,
     },
   },
-  space: {
-    height: FOOTER_HEIGHT,
-  },
 }));

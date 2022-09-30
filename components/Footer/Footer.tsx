@@ -5,10 +5,13 @@ import {
   Container,
   Stack,
   Text,
+  Group,
 } from "@mantine/core";
 import InlineLink from "../InlineLink";
 import useStyles from "./Footer.styles";
 import { FOOTER_HEIGHT } from "../styles";
+import FooterLink from "./FooterLink/FooterLink";
+import { pronomia } from "../../lib/links";
 
 export interface FooterProps {
   responsive?: boolean;
@@ -19,7 +22,7 @@ const Footer: FunctionComponent<FooterProps> = ({ responsive }) => {
 
   return (
     <>
-      <Space className={classes.space}></Space>
+      <Space sx={{ height: FOOTER_HEIGHT }}></Space>
       <MFooter
         height={FOOTER_HEIGHT}
         withBorder={false}
@@ -29,13 +32,22 @@ const Footer: FunctionComponent<FooterProps> = ({ responsive }) => {
           <Stack
             align="center"
             justify="center"
-            spacing="xs"
+            spacing="md"
             className="h-full"
           >
-            <Text align="center" color="dimmed">
-              Contribute | Issues | Discussions | Releases
-            </Text>
-            <Text align="center" size="sm" color="dimmed">
+            <Group align="center" color="dimmed">
+              <FooterLink href="/about/contribute">Contribute</FooterLink>
+              <FooterLink href={pronomia.issues} external>
+                Issues
+              </FooterLink>
+              <FooterLink href={pronomia.discussions} external>
+                Discussions
+              </FooterLink>
+              <FooterLink href={pronomia.releases} external>
+                Releases
+              </FooterLink>
+            </Group>
+            <Text align="center" size="xs" color="dimmed">
               Built by{" "}
               <InlineLink href="https://github.com/mensch272" blank>
                 Mohamed Haisham

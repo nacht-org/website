@@ -43,7 +43,7 @@ import Labeled from "../components/Labeled";
 import { TbEdit, TbClock, TbList } from "react-icons/tb";
 import TimeAgo from "react-timeago";
 import InlineLink from "../components/InlineLink";
-import { editPath } from "../lib/website";
+import { editPath } from "../lib/links";
 import Indent from "../components/Indent/Indent";
 import {
   breakpoint,
