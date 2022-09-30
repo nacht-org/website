@@ -3,11 +3,12 @@ import { FunctionComponent, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { Blockquote, TitleOrder, Code } from "@mantine/core";
+import { Blockquote, TitleOrder, Code, Text } from "@mantine/core";
 import Slugger from "github-slugger";
 import { useEffect } from "react";
 import Heading from "../../Markdown/Heading";
 import { Prism } from "@mantine/prism";
+import Link from "next/link";
 
 interface Props {
   content: string;
@@ -41,6 +42,11 @@ const RawContent: FunctionComponent<Props> = ({ content }) => {
         h4: heading,
         h5: heading,
         h6: heading,
+        a: ({ node, href, ...props }) => (
+          <Link href={href ?? ""} passHref>
+            <Text {...props} variant="link" component="a" inherit />
+          </Link>
+        ),
         blockquote: ({ node, ...props }) => <Blockquote {...props} />,
         code: ({ node, inline, className, children, ...props }) => {
           const match = /language-(\w+)/.exec(className || "");
