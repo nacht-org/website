@@ -24,28 +24,22 @@ import {
   Stack,
   Box,
   Text,
-  Title,
-  Space,
 } from "@mantine/core";
 import HeaderActions from "../components/Layout/Header/HeaderActions/HeaderActions";
 import Link from "next/link";
 import Footer from "../components/Layout/Footer/Footer";
 import { useState } from "react";
 import HeaderTitle from "../components/Layout/Header/HeaderTitle/HeaderTitle";
-import Labeled from "../components/MdPage/Labeled/Labeled";
-import { TbEdit, TbClock, TbList } from "react-icons/tb";
-import TimeAgo from "react-timeago";
-import InlineLink from "../components/InlineLink";
-import { editPath } from "../lib/links";
+import { TbList } from "react-icons/tb";
 import Indent from "../components/MdPage/Indent/Indent";
 import Navbar from "../components/MdPage/Navbar/Navbar";
 import {
   breakpoint,
   CONTENT_WIDTH,
   HEADER_HEIGHT,
-  NAVBAR_WIDTH,
   TABLE_OF_CONTENTS_WIDTH,
 } from "../components/styles";
+import Beam from "../components/MdPage/Beam/Beam";
 
 interface Props {
   guide: GuideData;
@@ -95,48 +89,7 @@ const MdPage: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
         }
       >
         <Paper shadow="md" sx={{ position: "relative", zIndex: 2 }}>
-          <Box
-            sx={(theme) => ({
-              backgroundColor:
-                theme.colorScheme == "dark"
-                  ? theme.colors.dark[8]
-                  : theme.colors.gray[0],
-            })}
-          >
-            <Indent>
-              <Title
-                order={1}
-                sx={{
-                  fontSize: "3rem",
-                  marginBottom: "0.25rem",
-                  fontWeight: 1000,
-                }}
-              >
-                {guide.title}
-              </Title>
-              <Text size="lg" mb="xl">
-                {guide.description}
-              </Text>
-              <Stack>
-                <Labeled label="Docs">
-                  <InlineLink href={editPath(guide.path)}>
-                    <Group spacing="xs">
-                      <TbEdit />
-                      <Text size="sm">Edit this page</Text>
-                    </Group>
-                  </InlineLink>
-                </Labeled>
-                <Labeled label="Last updated">
-                  <Group spacing="xs">
-                    <TbClock />
-                    <Text size="sm">
-                      <TimeAgo date={guide.dateModified} />
-                    </Text>
-                  </Group>
-                </Labeled>
-              </Stack>
-            </Indent>
-          </Box>
+          <Beam info={guide} />
           <Indent>
             <Group
               align="stretch"

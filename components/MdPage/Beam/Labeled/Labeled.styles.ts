@@ -1,5 +1,5 @@
 import { createStyles } from "@mantine/core";
-import { breakpoint } from "../../styles";
+import { breakpoint } from "../../../styles";
 
 export default createStyles((theme) => ({
   label: {
