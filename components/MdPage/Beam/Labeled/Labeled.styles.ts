@@ -3,7 +3,7 @@ import { breakpoint } from "../../../styles";
 
 export default createStyles((theme) => ({
   label: {
-    display: "hidden",
+    display: "none",
     width: "8rem",
 
     [breakpoint(theme.breakpoints.md)]: {

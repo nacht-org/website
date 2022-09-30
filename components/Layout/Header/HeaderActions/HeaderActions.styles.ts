@@ -3,7 +3,7 @@ import { breakpoint } from "../../../styles";
 
 export default createStyles((theme) => ({
   divider: {
-    display: "hidden",
+    display: "none",
     [breakpoint(theme.breakpoints.md)]: {
       display: "block",
     },

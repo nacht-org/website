@@ -3,9 +3,9 @@ import { breakpoint, HEADER_HEIGHT } from "../../styles";
 
 export default createStyles((theme) => ({
   hide: {
-    display: "hidden",
+    display: "none",
     [breakpoint(theme.breakpoints.md)]: {
-      display: "block",
+      display: "inline",
     },
   },
   toc: {
