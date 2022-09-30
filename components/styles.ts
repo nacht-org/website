@@ -1,3 +1,4 @@
+export const HEADER_HEIGHT = 60;
 export const TABLE_OF_CONTENTS_WIDTH = "15rem";
 export const CONTENT_WIDTH = 820;
 
