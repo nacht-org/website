@@ -8,6 +8,7 @@ import Labeled from "./Labeled/Labeled";
 import TimeAgo from "react-timeago";
 import useStyles from "./Beam.styles";
 import { editPath } from "../../../lib/links";
+import IndentWrapper from "../Indent/IndentWrapper/IndentWrapper";
 
 interface Props {
   info: GuideData;
@@ -18,32 +19,34 @@ const Beam: FunctionComponent<Props> = ({ info }) => {
 
   return (
     <div className={classes.beam}>
-      <Indent>
-        <Title order={1} className={classes.title}>
-          {info.title}
-        </Title>
-        <Text size="lg" mb="xl">
-          {info.description}
-        </Text>
-        <Stack>
-          <Labeled label="Docs">
-            <InlineLink href={editPath(info.path)}>
+      <IndentWrapper>
+        <div>
+          <Title order={1} className={classes.title}>
+            {info.title}
+          </Title>
+          <Text size="lg" mb="xl">
+            {info.description}
+          </Text>
+          <Stack>
+            <Labeled label="Docs">
+              <InlineLink href={editPath(info.path)}>
+                <Group spacing="xs">
+                  <TbEdit />
+                  <Text size="sm">Edit this page</Text>
+                </Group>
+              </InlineLink>
+            </Labeled>
+            <Labeled label="Last updated">
               <Group spacing="xs">
-                <TbEdit />
-                <Text size="sm">Edit this page</Text>
+                <TbClock />
+                <Text size="sm">
+                  <TimeAgo date={info.dateModified} />
+                </Text>
               </Group>
-            </InlineLink>
-          </Labeled>
-          <Labeled label="Last updated">
-            <Group spacing="xs">
-              <TbClock />
-              <Text size="sm">
-                <TimeAgo date={info.dateModified} />
-              </Text>
-            </Group>
-          </Labeled>
-        </Stack>
-      </Indent>
+            </Labeled>
+          </Stack>
+        </div>
+      </IndentWrapper>
     </div>
   );
 };

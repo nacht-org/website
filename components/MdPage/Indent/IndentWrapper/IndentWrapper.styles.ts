@@ -13,6 +13,8 @@ export default createStyles((theme) => ({
     alignItems: "stretch",
     gap: "2rem",
     position: "relative",
+  },
+  side_offset: {
     marginLeft: 0,
     [breakpoint(theme.breakpoints.sm)]: {
       marginLeft: NAVBAR_WIDTH.sm,

@@ -5,7 +5,7 @@ import IndentWrapper from "../Indent/IndentWrapper/IndentWrapper";
 const IndentFooter: FunctionComponent = () => {
   return (
     <FooterWrapper>
-      <IndentWrapper fill>
+      <IndentWrapper offset fill>
         <FooterInner preferAligned />
       </IndentWrapper>
     </FooterWrapper>

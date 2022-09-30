@@ -4,16 +4,22 @@ import useStyles from "./IndentWrapper.styles";
 
 interface Props {
   fill?: boolean;
+  offset?: boolean;
   children: ReactNode;
   side?: ReactNode;
 }
 
-const IndentWrapper: FunctionComponent<Props> = ({ fill, children, side }) => {
-  const { classes } = useStyles();
+const IndentWrapper: FunctionComponent<Props> = ({
+  fill,
+  offset,
+  children,
+  side,
+}) => {
+  const { classes, cx } = useStyles();
 
   return (
     <Indent fill={fill}>
-      <div className={classes.group}>
+      <div className={cx(classes.group, { [classes.side_offset]: offset })}>
         <div className={classes.content_wrapper}>{children}</div>
         {side != null ? (
           side
