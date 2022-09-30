@@ -3,21 +3,19 @@ import { FunctionComponent, ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import { GuideData } from "../../lib/guide";
-import { Blockquote, TitleOrder, Text, Code, ScrollArea } from "@mantine/core";
+import { Blockquote, TitleOrder, Code } from "@mantine/core";
 import Slugger from "github-slugger";
 import { useEffect } from "react";
-import Heading from "../Markdown/Heading";
+import Heading from "../../Markdown/Heading";
 import { Prism } from "@mantine/prism";
 
 interface Props {
-  guide: GuideData;
   content: string;
 }
 
 type HeadingParams = { level: number; children: ReactNode };
 
-const GuideContent: FunctionComponent<Props> = ({ guide, content }) => {
+const RawContent: FunctionComponent<Props> = ({ content }) => {
   const slugger = new Slugger();
 
   useEffect(() => {
@@ -62,4 +60,4 @@ const GuideContent: FunctionComponent<Props> = ({ guide, content }) => {
   );
 };
 
-export default GuideContent;
+export default RawContent;

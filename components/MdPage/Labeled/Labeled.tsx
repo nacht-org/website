@@ -1,5 +1,6 @@
-import { Group, MediaQuery, Text } from "@mantine/core";
+import { Group, Text } from "@mantine/core";
 import { FunctionComponent, ReactNode } from "react";
+import useStyles from "./Labeled.styles";
 
 interface Props {
   label: string;
@@ -7,16 +8,11 @@ interface Props {
 }
 
 const Labeled: FunctionComponent<Props> = ({ label, children }) => {
+  const { classes } = useStyles();
+
   return (
     <Group align="center" spacing={0}>
-      <Text
-        size="sm"
-        color="dimmed"
-        sx={{
-          width: "8rem",
-        }}
-        className="hidden md:block"
-      >
+      <Text size="sm" color="dimmed" className={classes.label}>
         {label}
       </Text>
       {children}

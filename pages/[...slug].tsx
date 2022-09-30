@@ -13,7 +13,7 @@ import {
 } from "../lib/guide";
 import { HeadingData, mdBody, parseHeadings } from "../lib/markdown";
 import Header from "../components/Layout/Header/Header";
-import GuideContent from "../components/guide/GuideContent";
+import RawContent from "../components/MdPage/RawContent/RawContent";
 import {
   AppShell,
   Burger,
@@ -32,12 +32,12 @@ import Link from "next/link";
 import Footer from "../components/Layout/Footer/Footer";
 import { useState } from "react";
 import HeaderTitle from "../components/Layout/Header/HeaderTitle/HeaderTitle";
-import Labeled from "../components/Labeled";
+import Labeled from "../components/MdPage/Labeled/Labeled";
 import { TbEdit, TbClock, TbList } from "react-icons/tb";
 import TimeAgo from "react-timeago";
 import InlineLink from "../components/InlineLink";
 import { editPath } from "../lib/links";
-import Indent from "../components/Indent/Indent";
+import Indent from "../components/MdPage/Indent/Indent";
 import Navbar from "../components/MdPage/Navbar/Navbar";
 import {
   breakpoint,
@@ -155,7 +155,7 @@ const MdPage: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
                   },
                 })}
               >
-                <GuideContent guide={guide} content={markdown} />
+                <RawContent content={markdown} />
               </Box>
               <div className="hidden md:block">
                 <Box
