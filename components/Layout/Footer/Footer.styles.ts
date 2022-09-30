@@ -1,5 +1,5 @@
 import { createStyles } from "@mantine/core";
-import { breakpoint, FOOTER_HEIGHT, NAVBAR_WIDTH } from "../styles";
+import { breakpoint, FOOTER_HEIGHT, NAVBAR_WIDTH } from "../../styles";
 
 export default createStyles((theme) => ({
   footer: {

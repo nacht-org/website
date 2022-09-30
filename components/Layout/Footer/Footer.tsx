@@ -7,11 +7,11 @@ import {
   Text,
   Group,
 } from "@mantine/core";
-import InlineLink from "../InlineLink";
+import InlineLink from "../../InlineLink";
 import useStyles from "./Footer.styles";
-import { FOOTER_HEIGHT } from "../styles";
+import { FOOTER_HEIGHT } from "../../styles";
 import FooterLink from "./FooterLink/FooterLink";
-import { pronomia } from "../../lib/links";
+import { pronomia } from "../../../lib/links";
 
 export interface FooterProps {
   responsive?: boolean;

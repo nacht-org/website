@@ -1,5 +1,5 @@
 import { createStyles } from "@mantine/core";
-import { HEADER_HEIGHT } from "../styles";
+import { HEADER_HEIGHT } from "../../styles";
 
 export default createStyles((theme) => ({
   header: {

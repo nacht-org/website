@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import Slugger from "github-slugger";
 import { Title, TitleOrder, Box } from "@mantine/core";
 import Link from "next/link";
-import { HEADER_HEIGHT } from "../Layout/Header";
+import { HEADER_HEIGHT } from "../styles";
 
 function flatten(text: string, child: any): any {
   return typeof child === "string"

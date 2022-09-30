@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode } from "react";
 import { Box, Header as MantineHeader } from "@mantine/core";
 import useStyles from "./Header.styles";
-import { HEADER_HEIGHT } from "../styles";
+import { HEADER_HEIGHT } from "../../styles";
 
 export interface HeaderProps {
   children?: ReactNode;

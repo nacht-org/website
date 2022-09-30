@@ -12,8 +12,7 @@ import {
   GuideGroup,
 } from "../lib/guide";
 import { HeadingData, mdBody, parseHeadings } from "../lib/markdown";
-import { useRouter } from "next/router";
-import Header, { HEADER_HEIGHT } from "../components/Layout/Header";
+import Header from "../components/Layout/Header/Header";
 import GuideContent from "../components/guide/GuideContent";
 import {
   AppShell,
@@ -26,14 +25,12 @@ import {
   Stack,
   Box,
   Text,
-  Space,
   Title,
-  Container,
+  Space,
 } from "@mantine/core";
 import HeaderActions from "../components/header/HeaderActions";
 import Link from "next/link";
-import { routePath } from "../lib/route";
-import Footer from "../components/Footer/Footer";
+import Footer from "../components/Layout/Footer/Footer";
 import { useState } from "react";
 import HeaderTitle from "../components/header/HeaderTitle";
 import NavItem from "../components/Navigation/NavItem";
@@ -48,6 +45,7 @@ import Indent from "../components/Indent/Indent";
 import {
   breakpoint,
   CONTENT_WIDTH,
+  HEADER_HEIGHT,
   NAVBAR_WIDTH,
   TABLE_OF_CONTENTS_WIDTH,
 } from "../components/styles";
