@@ -11,6 +11,23 @@ export default createStyles((theme) => ({
     backgroundColor:
       theme.colorScheme == "dark" ? theme.colors.dark[8] : theme.colors.gray[0],
   },
+  height: {
+    height: FOOTER_HEIGHT.xs,
+    [breakpoint(theme.breakpoints.sm)]: {
+      height: FOOTER_HEIGHT.sm,
+    },
+  },
+  links: {
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: theme.spacing.lg,
+    gap: theme.spacing.md,
+
+    [breakpoint(theme.breakpoints.sm)]: {
+      flexDirection: "row",
+      marginBottom: 0,
+    },
+  },
   responsive: {
     marginLeft: 0,
 

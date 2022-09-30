@@ -22,11 +22,11 @@ const Footer: FunctionComponent<FooterProps> = ({ responsive }) => {
 
   return (
     <>
-      <Space sx={{ height: FOOTER_HEIGHT }}></Space>
-      <MFooter
-        height={FOOTER_HEIGHT}
-        withBorder={false}
-        className={cx(classes.footer, { [classes.responsive]: responsive })}
+      <div className={classes.height}></div>
+      <div
+        className={cx(classes.footer, classes.height, {
+          [classes.responsive]: responsive,
+        })}
       >
         <Container className="h-full">
           <Stack
@@ -35,7 +35,7 @@ const Footer: FunctionComponent<FooterProps> = ({ responsive }) => {
             spacing="md"
             className="h-full"
           >
-            <Group align="center" color="dimmed">
+            <div className={classes.links}>
               <FooterLink href="/about/contribute">Contribute</FooterLink>
               <FooterLink href={pronomia.issues} external>
                 Issues
@@ -46,7 +46,7 @@ const Footer: FunctionComponent<FooterProps> = ({ responsive }) => {
               <FooterLink href={pronomia.releases} external>
                 Releases
               </FooterLink>
-            </Group>
+            </div>
             <Text align="center" size="xs" color="dimmed">
               Built by{" "}
               <InlineLink href="https://github.com/mensch272" blank>
@@ -63,7 +63,7 @@ const Footer: FunctionComponent<FooterProps> = ({ responsive }) => {
             </Text>
           </Stack>
         </Container>
-      </MFooter>
+      </div>
     </>
   );
 };

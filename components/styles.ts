@@ -6,7 +6,10 @@ export const NAVBAR_WIDTH = {
   lg: 260,
 };
 
-export const FOOTER_HEIGHT = "8rem";
+export const FOOTER_HEIGHT = {
+  xs: "18rem",
+  sm: "8rem",
+};
 
 /** @media (min-width: `after`px) */
 export function breakpoint(after: number): string {

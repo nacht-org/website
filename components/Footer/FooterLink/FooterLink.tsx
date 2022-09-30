@@ -12,7 +12,7 @@ const FooterLink: FunctionComponent<Props> = ({ children, href, external }) => {
   return (
     <Link href={href} passHref>
       <Button
-        variant="subtle"
+        variant="light"
         component="a"
         target={external ? "_blank" : undefined}
       >
