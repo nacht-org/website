@@ -13,33 +13,14 @@ import {
 } from "../lib/guide";
 import { HeadingData, mdBody, parseHeadings } from "../lib/markdown";
 import Header from "../components/Layout/Header/Header";
-import RawContent from "../components/MdPage/RawContent/RawContent";
-import {
-  AppShell,
-  Burger,
-  Group,
-  MediaQuery,
-  NavLink,
-  Paper,
-  Stack,
-  Box,
-  Text,
-} from "@mantine/core";
+import { AppShell, Burger, Group, MediaQuery } from "@mantine/core";
 import HeaderActions from "../components/Layout/Header/HeaderActions/HeaderActions";
-import Link from "next/link";
 import Footer from "../components/Layout/Footer/Footer";
 import { useState } from "react";
 import HeaderTitle from "../components/Layout/Header/HeaderTitle/HeaderTitle";
-import { TbList } from "react-icons/tb";
-import Indent from "../components/MdPage/Indent/Indent";
 import Navbar from "../components/MdPage/Navbar/Navbar";
-import {
-  breakpoint,
-  CONTENT_WIDTH,
-  HEADER_HEIGHT,
-  TABLE_OF_CONTENTS_WIDTH,
-} from "../components/styles";
 import Beam from "../components/MdPage/Beam/Beam";
+import MainContent from "../components/MdPage/MainContent/MainContent";
 
 interface Props {
   guide: GuideData;
@@ -88,76 +69,10 @@ const MdPage: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
           ></Navbar>
         }
       >
-        <Paper shadow="md" sx={{ position: "relative", zIndex: 2 }}>
+        <article>
           <Beam info={guide} />
-          <Indent>
-            <Group
-              align="stretch"
-              sx={{ gap: "2rem", position: "relative" }}
-              noWrap
-            >
-              <Box
-                sx={(theme) => ({
-                  width: "100%",
-                  maxWidth: CONTENT_WIDTH,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-
-                  [breakpoint(theme.breakpoints.md)]: {
-                    width: `calc(100% - ${TABLE_OF_CONTENTS_WIDTH})`,
-                  },
-                })}
-              >
-                <RawContent content={markdown} />
-              </Box>
-              <div className="hidden md:block">
-                <Box
-                  sx={(theme) => ({
-                    position: "sticky",
-                    top: HEADER_HEIGHT + theme.spacing.xl * 2,
-                    width: "15rem",
-                  })}
-                >
-                  <Stack spacing={0}>
-                    <Group mb="md">
-                      <TbList />
-                      <Text size="sm" span>
-                        Table of contents
-                      </Text>
-                    </Group>
-                    {contents
-                      .filter((content) => content.depth > 1)
-                      .map((content) => {
-                        const active = false;
-
-                        return (
-                          <Link href={`#${content.slug}`} passHref>
-                            <NavLink
-                              label={content.title}
-                              sx={(theme) => ({
-                                borderLeftColor: active
-                                  ? theme.primaryColor
-                                  : theme.colorScheme == "dark"
-                                  ? theme.colors.dark[6]
-                                  : theme.colors.gray[5],
-                                borderLeftWidth: "1px",
-                                borderLeftStyle: "solid",
-                              })}
-                              styles={{
-                                label: {
-                                  padding: (content.depth - 2) * 8,
-                                },
-                              }}
-                            ></NavLink>
-                          </Link>
-                        );
-                      })}
-                  </Stack>
-                </Box>
-              </div>
-            </Group>
-          </Indent>
-        </Paper>
+          <MainContent markdown={markdown} contents={contents} />
+        </article>
         <Footer responsive />
       </AppShell>
     </>
