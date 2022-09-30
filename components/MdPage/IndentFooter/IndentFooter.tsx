@@ -11,7 +11,9 @@ const IndentFooter: FunctionComponent = () => {
       <Indent fill>
         <div className={classes.group}>
           <div className={classes.content_wrapper}>
-            <FooterInner />
+            <FooterInner preferAligned />
+          </div>
+          <div className={classes.hide}>
             <div className={classes.table}></div>
           </div>
         </div>

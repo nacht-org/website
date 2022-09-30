@@ -10,10 +10,10 @@ interface Props {
 }
 
 const FooterInner: FunctionComponent<Props> = ({ preferAligned }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classes.stack}>
+    <div className={cx(classes.stack, { [classes.aligned]: preferAligned })}>
       <div className={classes.links}>
         <FooterLink href="/about/contribute">Contribute</FooterLink>
         <FooterLink href={pronomia.issues} external>

@@ -1,5 +1,9 @@
 import { createStyles } from "@mantine/core";
-import { breakpoint, HEADER_HEIGHT } from "../../styles";
+import {
+  breakpoint,
+  HEADER_HEIGHT,
+  TABLE_OF_CONTENTS_WIDTH,
+} from "../../styles";
 
 export default createStyles((theme) => ({
   hide: {
@@ -11,7 +15,7 @@ export default createStyles((theme) => ({
   toc: {
     position: "sticky",
     top: HEADER_HEIGHT + theme.spacing.xl * 2,
-    width: "15rem",
+    width: TABLE_OF_CONTENTS_WIDTH,
   },
   link: {
     borderLeftColor:

@@ -13,6 +13,13 @@ export default createStyles((theme) => ({
     alignItems: "stretch",
     gap: "2rem",
     position: "relative",
+    marginLeft: 0,
+    [breakpoint(theme.breakpoints.sm)]: {
+      marginLeft: NAVBAR_WIDTH.sm,
+    },
+    [breakpoint(theme.breakpoints.lg)]: {
+      marginLeft: NAVBAR_WIDTH.lg,
+    },
   },
   content_wrapper: {
     height: "100%",
@@ -25,11 +32,24 @@ export default createStyles((theme) => ({
       width: `calc(100% - ${TABLE_OF_CONTENTS_WIDTH})`,
     },
   },
-  table: {
-    width: TABLE_OF_CONTENTS_WIDTH,
+  hide: {
     display: "none",
     [breakpoint(theme.breakpoints.md)]: {
       display: "inline",
+    },
+  },
+  table: {
+    width: TABLE_OF_CONTENTS_WIDTH,
+  },
+  indent: {
+    padding: theme.spacing.lg,
+
+    [breakpoint(theme.breakpoints.md)]: {
+      padding: theme.spacing.xl,
+    },
+
+    [breakpoint(theme.breakpoints.lg)]: {
+      padding: theme.spacing.xl * 2,
     },
   },
 }));

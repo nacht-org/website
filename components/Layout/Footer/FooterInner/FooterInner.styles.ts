@@ -20,4 +20,9 @@ export default createStyles((theme) => ({
       marginBottom: 0,
     },
   },
+  aligned: {
+    [breakpoint(theme.breakpoints.sm)]: {
+      alignItems: "start",
+    },
+  },
 }));
