@@ -2,6 +2,7 @@ import { Paper } from "@mantine/core";
 import { FunctionComponent } from "react";
 import { HeadingData } from "../../../lib/markdown";
 import Indent from "../Indent/Indent";
+import IndentWrapper from "../Indent/IndentWrapper/IndentWrapper";
 import RawContent from "../RawContent/RawContent";
 import TableOfContents from "../TableOfContents/TableOfContents";
 import useStyles from "./MainContent.styles";
@@ -16,14 +17,9 @@ const MainContent: FunctionComponent<Props> = ({ markdown, contents }) => {
 
   return (
     <Paper className={classes.wrapper}>
-      <Indent>
-        <div className={classes.group}>
-          <div className={classes.content_wrapper}>
-            <RawContent content={markdown} />
-          </div>
-          <TableOfContents contents={contents} />
-        </div>
-      </Indent>
+      <IndentWrapper side={<TableOfContents contents={contents} />}>
+        <RawContent content={markdown} />
+      </IndentWrapper>
     </Paper>
   );
 };
