@@ -2,8 +2,9 @@ import { NavLink } from "@mantine/core";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
-import { GuideMinimal } from "../../lib/guide";
-import { routePath } from "../../lib/route";
+import { GuideMinimal } from "../../../../lib/guide";
+import { routePath } from "../../../../lib/route";
+import useStyles from "./NavItem.styles";
 
 interface Props {
   guide: GuideMinimal;
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const NavItem: FunctionComponent<Props> = ({ guide, onClick }) => {
+  const { classes, cx } = useStyles();
+
   const router = useRouter();
   const href = routePath(...guide.route.slugs);
   const active = router.asPath.startsWith(href);
@@ -22,20 +25,7 @@ const NavItem: FunctionComponent<Props> = ({ guide, onClick }) => {
         active={active}
         component="a"
         onClick={onClick}
-        sx={(theme) => ({
-          borderLeftColor: active
-            ? theme.primaryColor
-            : theme.colorScheme == "dark"
-            ? theme.colors.dark[6]
-            : theme.colors.gray[5],
-          borderLeftWidth: "1px",
-          borderLeftStyle: "solid",
-
-          borderTopLeftRadius: 0,
-          borderBottomLeftRadius: 0,
-          borderTopRightRadius: theme.radius.sm,
-          borderBottomRightRadius: theme.radius.sm,
-        })}
+        className={cx(classes.item, { [classes.active]: active })}
       />
     </Link>
   );

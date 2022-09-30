@@ -3,10 +3,11 @@ import { FunctionComponent } from "react";
 
 import { FaGithub } from "react-icons/fa";
 import { ActionIcon } from "@mantine/core";
+import { pronomia } from "../../../../lib/links";
 
 const CodeLink: FunctionComponent = () => {
   return (
-    <Link href="https://github.com/nacht-org/nacht" passHref>
+    <Link href={pronomia.source} passHref>
       <ActionIcon
         title="Pronomia source code"
         component="a"

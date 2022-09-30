@@ -19,7 +19,6 @@ import {
   Burger,
   Group,
   MediaQuery,
-  Navbar,
   NavLink,
   Paper,
   Stack,
@@ -28,20 +27,18 @@ import {
   Title,
   Space,
 } from "@mantine/core";
-import HeaderActions from "../components/header/HeaderActions";
+import HeaderActions from "../components/Layout/Header/HeaderActions/HeaderActions";
 import Link from "next/link";
 import Footer from "../components/Layout/Footer/Footer";
 import { useState } from "react";
-import HeaderTitle from "../components/header/HeaderTitle";
-import NavItem from "../components/Navigation/NavItem";
-import NavGroup from "../components/Navigation/NavGroup";
-import NavSpace from "../components/Navigation/NavSpace";
+import HeaderTitle from "../components/Layout/Header/HeaderTitle/HeaderTitle";
 import Labeled from "../components/Labeled";
 import { TbEdit, TbClock, TbList } from "react-icons/tb";
 import TimeAgo from "react-timeago";
 import InlineLink from "../components/InlineLink";
 import { editPath } from "../lib/links";
 import Indent from "../components/Indent/Indent";
+import Navbar from "../components/MdPage/Navbar/Navbar";
 import {
   breakpoint,
   CONTENT_WIDTH,
@@ -61,7 +58,7 @@ interface Params extends ParsedUrlQuery {
   slug: string[];
 }
 
-const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
+const MdPage: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
   const [opened, setOpened] = useState(false);
 
   return (
@@ -91,39 +88,10 @@ const Guide: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
         navbarOffsetBreakpoint="sm"
         navbar={
           <Navbar
-            p="md"
-            hiddenBreakpoint="sm"
-            width={NAVBAR_WIDTH}
-            sx={(theme) => ({
-              backgroundColor:
-                theme.colorScheme == "dark"
-                  ? theme.colors.dark[8]
-                  : theme.white,
-              borderColor:
-                theme.colorScheme == "dark"
-                  ? theme.colors.dark[7]
-                  : theme.colors.gray[2],
-            })}
+            groups={groups}
             hidden={!opened}
-          >
-            <Stack spacing="xs">
-              {groups.map((group) => {
-                return (
-                  <NavGroup title={group.title}>
-                    {group.guides.map((guide) => (
-                      <>
-                        <NavSpace />
-                        <NavItem
-                          guide={guide}
-                          onClick={() => setOpened(false)}
-                        />
-                      </>
-                    ))}
-                  </NavGroup>
-                );
-              })}
-            </Stack>
-          </Navbar>
+            onItemClicked={() => setOpened(false)}
+          ></Navbar>
         }
       >
         <Paper shadow="md" sx={{ position: "relative", zIndex: 2 }}>
@@ -262,4 +230,4 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   return { paths, fallback: false };
 };
 
-export default Guide;
+export default MdPage;

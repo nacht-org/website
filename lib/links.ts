@@ -13,6 +13,7 @@ export const website = {
  * Links to pronomia source and other related
  */
 export const pronomia = {
+  source: PRONOMIA_SOURCE,
   issues: `${PRONOMIA_SOURCE}/issues`,
   discussions: `${PRONOMIA_SOURCE}/discussions`,
   releases: `${PRONOMIA_SOURCE}/releases`,

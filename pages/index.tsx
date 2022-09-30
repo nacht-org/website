@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { AppShell, Stack, Title, Text, Paper, Button } from "@mantine/core";
-import HeaderActions from "../components/header/HeaderActions";
+import HeaderActions from "../components/Layout/Header/HeaderActions/HeaderActions";
 import Header from "../components/Layout/Header/Header";
 import Footer from "../components/Layout/Footer/Footer";
 import Showcase from "../components/Showcase/Showcase";
-import HeaderTitle from "../components/header/HeaderTitle";
+import HeaderTitle from "../components/Layout/Header/HeaderTitle/HeaderTitle";
 import Link from "next/link";
 
 const Home: NextPage = () => {
