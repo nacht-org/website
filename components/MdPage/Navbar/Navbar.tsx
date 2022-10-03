@@ -31,12 +31,12 @@ const Navbar: FunctionComponent<Props> = ({
       <Stack spacing="xs">
         {groups.map((group) => {
           return (
-            <NavGroup title={group.title}>
+            <NavGroup title={group.title} key={group.title}>
               {group.guides.map((guide) => (
-                <>
+                <div key={guide.route.slugs.join("/")}>
                   <NavSpace />
                   <NavItem guide={guide} onClick={onItemClicked} />
-                </>
+                </div>
               ))}
             </NavGroup>
           );
