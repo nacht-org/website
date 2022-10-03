@@ -30,6 +30,7 @@ const TableOfContents: FunctionComponent<Props> = ({ contents }) => {
               return (
                 <Link href={`#${content.slug}`} passHref>
                   <NavLink
+                    key={content.slug}
                     label={content.title}
                     className={cx(classes.link, { [classes.active]: active })}
                     styles={{
