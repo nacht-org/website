@@ -33,6 +33,6 @@ export function parseMeta<F, T extends F & FileMeta>(path: string): T {
   return {
     ...parseFront<F>(path),
     path,
-    dateModified: lastModified(path).toISOString(),
+    dateModified: lastModified(path)?.toUTCString(),
   } as T;
 }
