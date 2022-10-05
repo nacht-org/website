@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { pronomia } from "../../../../lib/links";
+import { nacht } from "../../../../lib/links";
 import FooterLink from "../FooterLink/FooterLink";
 import useStyles from "./FooterInner.styles";
 import { Text } from "@mantine/core";
@@ -16,13 +16,13 @@ const FooterInner: FunctionComponent<Props> = ({ preferAligned }) => {
     <div className={cx(classes.stack, { [classes.aligned]: preferAligned })}>
       <div className={classes.links}>
         <FooterLink href="/about/contribute">Contribute</FooterLink>
-        <FooterLink href={pronomia.issues} external>
+        <FooterLink href={nacht.issues} external>
           Issues
         </FooterLink>
-        <FooterLink href={pronomia.discussions} external>
+        <FooterLink href={nacht.discussions} external>
           Discussions
         </FooterLink>
-        <FooterLink href={pronomia.releases} external>
+        <FooterLink href={nacht.releases} external>
           Releases
         </FooterLink>
       </div>

@@ -1,17 +1,17 @@
 ---
 title: Getting started
-description: A post about getting started with using pronomia
+description: A minimal guide on how to install and use nacht app
 ---
 
 ## Installation
 
-You can download the latest version of **Pronomia** by going to our [releases] page. When you've completed the download, open the apk file and proceed with installing it.
+You can download the latest version of **Nacht** by going to our [releases] page. When you've completed the download, open the apk file and proceed with installing it.
 
 [releases]: https://github.com/nacht-org/nacht/releases
 
 ## Adding novel to library
 
-Now that Pronomia is installed, open the app and navigate to _Browse_.
+Now that Nacht is installed, open the app and navigate to _Browse_.
 Tap on the source you would like to use to browse their most popular novels.
 
 When you find a novel you want to read, click on it, and then press the _Add to library_
@@ -19,7 +19,7 @@ button. It should now appear in _Library_ ready to be read.
 
 ## Search for novel
 
-Pronomia currently offers two ways to search for novels.
+Nacht currently offers two ways to search for novels.
 
 ### Search by name
 
@@ -27,7 +27,7 @@ Follow the same process as above and go your source of choice. Click the search 
 
 The results will be shown in a grid similar to how popular novels shows it.
 
-Pronomia supports basic search functionality on a source by source basis so some of the
+Nacht supports basic search functionality on a source by source basis so some of the
 sources may not support it.
 
 ### Search with url

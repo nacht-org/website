@@ -31,7 +31,7 @@ const Home: NextPage = () => {
         >
           <Stack align="center" className="mt-36 mb-8">
             <Title order={1} weight="normal" className="font-display text-7xl">
-              Pronomia
+              Nacht
             </Title>
             <Text
               className="max-w-5xl text-2xl md:text-3xl"

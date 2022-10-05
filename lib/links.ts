@@ -1,22 +1,22 @@
-const PRONOMIA_ORG = "https://github.com/nacht-org";
-const PRONOMIA_SOURCE = `${PRONOMIA_ORG}/nacht`;
+const NACHT_ORG = "https://github.com/nacht-org";
+const NACHT_SOURCE = `${NACHT_ORG}/nacht`;
 
 /**
  * Meta information related to the website
  */
 export const website = {
-  source: `${PRONOMIA_ORG}/website`,
+  source: `${NACHT_ORG}/website`,
   branch: "main",
 };
 
 /**
- * Links to pronomia source and other related
+ * Links to nacht source and other related
  */
-export const pronomia = {
-  source: PRONOMIA_SOURCE,
-  issues: `${PRONOMIA_SOURCE}/issues`,
-  discussions: `${PRONOMIA_SOURCE}/discussions`,
-  releases: `${PRONOMIA_SOURCE}/releases`,
+export const nacht = {
+  source: NACHT_SOURCE,
+  issues: `${NACHT_SOURCE}/issues`,
+  discussions: `${NACHT_SOURCE}/discussions`,
+  releases: `${NACHT_SOURCE}/releases`,
 };
 
 /**

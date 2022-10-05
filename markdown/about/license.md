@@ -1,6 +1,6 @@
 ---
 title: License
-description: List of icenses used by pronomia and related products
+description: List of icenses used by nacht and related products
 ---
 
 ## Apache 2.0

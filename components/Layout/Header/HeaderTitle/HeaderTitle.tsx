@@ -14,7 +14,7 @@ const HeaderTitle: FunctionComponent = () => {
           className={cx("font-display", classes.title)}
           weight="normal"
         >
-          Pronomia
+          Nacht
         </Title>
       </UnstyledButton>
     </Link>
