@@ -12,11 +12,10 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Promonia</title>
+        <title>Nacht</title>
         <meta
           name="description"
-          content="Free and open source novel reader designed to be user friendly and
-            customizable"
+          content="Free and open source novel reader designed with extensibility"
         />
       </Head>
       <Paper shadow="md" sx={{ position: "relative", zIndex: 2 }}>

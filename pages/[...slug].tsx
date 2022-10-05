@@ -39,7 +39,7 @@ const MdPage: NextPage<Props> = ({ guide, markdown, groups, contents }) => {
   return (
     <>
       <Head>
-        <title>{guide.title} | Promonia</title>
+        <title>{guide.title} | Nacht</title>
         <meta name="description" content={guide.description} />
       </Head>
       <AppShell
