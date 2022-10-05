@@ -33,6 +33,7 @@ const TableOfContents: FunctionComponent<Props> = ({ contents }) => {
                     key={content.slug}
                     label={content.title}
                     className={cx(classes.link, { [classes.active]: active })}
+                    component="a"
                     styles={{
                       label: {
                         padding: (content.depth - 2) * 8,
