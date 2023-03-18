@@ -2,22 +2,35 @@
 import HeaderLink from './HeaderLink.astro';
 import Logo from './Logo.astro';
 import { SITE_TITLE } from '../consts';
+import { Icon } from 'astro-icon';
 ---
 
-<header class="sticky top-0 p-4 border-b">
+<header class="sticky top-0 p-4 bg-primary-dim">
 	<div class="flex justify-between items-center">
-		<div class="flex items-center gap-4 text-primary">
-			<div class="h-8 aspect-square">
+		<a href="/" class="flex items-center gap-4 group">
+			<div class="w-8 aspect-square group-hover:rotate-45 transition-transform">
 				<Logo />
 			</div>
-			<h1 class="text-2xl font-black">{ SITE_TITLE }</h1>
-		</div>
-		<nav class="flex gap-4">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-			<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
+			<span class="uppercase tracking-wide text-sm">
+				{ SITE_TITLE }
+			</span>
+		</a>
+
+		<nav>
+			<div class="flex items-center justify-center gap-4 group relative">
+				<span class="text-sm tracking-wide">MENU</span>
+				<div class="w-8 aspect-square">
+					<Icon name="mdi:menu"  />
+				</div>
+
+				<div class="bg-primary-dim absolute right-0 top-0 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all">
+					<div class="flex flex-col gap-4 tracking-wide uppercase text-sm p-1 mr-9">
+						<a href="">Guide</a>
+						<a href="">Blog</a>
+						<a href="">About</a>
+					</div>
+				</div>
+			</div>
 		</nav>
 	</div>
 </header>
