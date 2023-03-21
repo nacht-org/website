@@ -1,7 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import Logo from '../components/Logo.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { Icon } from 'astro-icon';
@@ -40,13 +39,13 @@ import { Icon } from 'astro-icon';
 
 			<!-- Background Logo -->
 			<div class="absolute inset-4 flex items-center pointer-events-none">
-				<Logo class="w-96 aspect-square text-primary-dim mx-auto drop-shadow-[0_2px_2px_rgb(81,81,130,0.1)]" />
+				<Logo class="w-96 aspect-square text-primary-dim mx-auto drop-shadow-[0_1px_1px_rgb(81,81,130,0.1)]" />
 			</div>
 
 			<!-- Footer -->
 			<footer class="absolute left-4 bottom-4 right-4 text-xs p-4 uppercase">
 				<div class="flex flex-col md:flex-row gap-2 justify-between">
-					<div class="flex items-center gap-4">
+					<div class="flex items-center gap-4 hover:underline">
 						<a href="https://github.com/nacht-org/nacht" target="_blank">Github</a>
 					</div>
 					<span>
@@ -54,7 +53,6 @@ import { Icon } from 'astro-icon';
 					</span>
 				</div>
 			</footer>
-			<!-- <Footer /> -->
 		</div>
 	</body>
 </html>
