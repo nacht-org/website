@@ -1,6 +1,8 @@
 ---
 title: Getting Started
 description: This page is your starting point for quickly and easily installing and setting up the app on your device
+sidebar:
+  order: 1
 ---
 
 ## Installation
