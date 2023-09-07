@@ -15,7 +15,7 @@ The main flutter application
 
 For accessing various novel sources.
 
-- [nacht-org/nacht-sources](https://github.com/nacht-org/nacht-sources)
+- [nacht-org/nacht-sources](https://github.com/nacht-org/nacht_sources)
 
 ## Website
 
